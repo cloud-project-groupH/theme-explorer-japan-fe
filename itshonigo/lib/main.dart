@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'login_page_widget.dart';
+import 'survey_main_widget.dart';
 void main() {
-  runApp(const LoginPageWidget());
+  runApp(SurveyMain());
 }
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
