@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 class ChatRoomList extends StatelessWidget {
-  final _title = 'survey main';
+  final _title = 'chat room list';
 
   @override
   Widget build(BuildContext context) {
