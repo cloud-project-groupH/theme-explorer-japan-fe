@@ -44,7 +44,7 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
       
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
