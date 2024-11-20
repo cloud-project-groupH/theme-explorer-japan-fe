@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:itshownigo/chat_room_list.dart';
 import 'package:itshownigo/location_page.dart';
+import 'package:itshownigo/main_page.dart';
 import 'login_page_widget.dart';
 import 'survey_main_widget.dart';
 import 'chat_room.dart';
 import 'location_list.dart';
 void main() {
-  runApp(LocationPage());
+  runApp(MainPage());
 }
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
