@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:itshownigo/chat_room_list.dart';
 import 'login_page_widget.dart';
 import 'survey_main_widget.dart';
+import 'chat_room.dart';
 void main() {
-  runApp(ChatRoomList());
+  runApp(ChatRoom());
 }
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
