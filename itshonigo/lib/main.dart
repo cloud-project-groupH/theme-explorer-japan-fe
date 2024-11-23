@@ -5,7 +5,7 @@ import 'survey_main_widget.dart';
 import 'chat_room.dart';
 import 'location_list.dart';
 void main() {
-  runApp(LocationList());
+  runApp(ChatRoomList());
 }
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

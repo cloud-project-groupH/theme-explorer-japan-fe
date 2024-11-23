@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(LoginPage());
-
-}
 
 class LoginPage extends StatelessWidget {
   final _title = 'login page';
@@ -48,7 +44,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     return MaterialApp(
       
       home: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,

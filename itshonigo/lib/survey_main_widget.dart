@@ -43,7 +43,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
     return MaterialApp(
       
       home: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,

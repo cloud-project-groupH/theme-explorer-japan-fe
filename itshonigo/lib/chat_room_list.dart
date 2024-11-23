@@ -10,6 +10,7 @@ class ChatRoomList extends StatelessWidget {
     return MaterialApp(
       title : _title,
       home: const ChatRoomListWidget(),
+
     );
   }
 }
@@ -44,7 +45,7 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
