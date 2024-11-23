@@ -77,9 +77,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
           centerTitle: true,
           elevation: 2,
         ),
-        body: SafeArea(
-          top: true,
-          child: Align(
+        body:  Align(
             alignment: AlignmentDirectional(0, 0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -113,7 +111,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 ),
               ],
             ),
-          ),
+          
         ),
       ),
     );
