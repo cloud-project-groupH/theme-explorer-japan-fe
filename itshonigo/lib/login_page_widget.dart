@@ -45,34 +45,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
       
       home: Scaffold(
         backgroundColor: Color(0xffF1F4F8),
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          leading: IconButton(
-            iconSize: 60,
-            icon: Icon(
-              Icons.arrow_back_ios_new,
-              color:Colors.black,
-              size: 30,
-            ),
-            onPressed: () async {
-              
-            },
-          ),
-          title: Text(
-            '로그인',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 22,
-                  letterSpacing: 0.0,
-                ),
-          ),
-          actions: [],
-          centerTitle: true,
-          elevation: 2,
-        ),
+        
         body:  Align(
             alignment: AlignmentDirectional(0, 0),
             child: Column(
