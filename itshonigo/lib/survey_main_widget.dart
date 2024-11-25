@@ -9,6 +9,7 @@ class SurveyMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner:false,
       title : _title,
       home: const SurveyMainWidget(),
     );
@@ -41,6 +42,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner:false,
       
       home: Scaffold(
         backgroundColor: Color(0xffF1F4F8),
