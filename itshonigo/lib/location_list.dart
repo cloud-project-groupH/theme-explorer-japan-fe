@@ -76,6 +76,132 @@ class _LocationListWidgetState extends State<LocationListWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Container(
+                width: MediaQuery.sizeOf(context).width,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Container(
+                              width: 70,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ),
+                              alignment: AlignmentDirectional(0, 0),
+                              child: Text(
+                                '맛집 탐방',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 14,
+                                      color:Colors.black,
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                            child: VerticalDivider(
+                              thickness: 2,
+                              color:Colors.grey,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Container(
+                              width: 70,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ),
+                              alignment: AlignmentDirectional(0, 0),
+                              child: Text(
+                                '관광지',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 14,
+                                      color:Colors.black,
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                            child: VerticalDivider(
+                              thickness: 2,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Container(
+                              width: 70,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ),
+                              alignment: AlignmentDirectional(0, 0),
+                              child: Text(
+                                '역사/문화',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 14,
+                                      color:Colors.black,
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                            child: VerticalDivider(
+                              thickness: 2,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Container(
+                              width: 70,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ),
+                              alignment: AlignmentDirectional(0, 0),
+                              child: Text(
+                                '자연/힐링',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 14,
+                                      color:Colors.black,
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(5),
