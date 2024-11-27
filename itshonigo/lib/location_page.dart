@@ -167,6 +167,17 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
+                                  IconButton(
+                                    
+                                    icon: Icon(
+                                      Icons.map,
+                                      color: Colors.black,
+                                      size: 24,
+                                    ),
+                                    onPressed: () {
+                                      print('IconButton pressed ...');
+                                    },
+                                  ),
                                  IconButton(
                                     
                                     icon: Icon(
