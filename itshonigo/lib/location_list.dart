@@ -24,7 +24,28 @@ class LocationListWidget extends StatefulWidget {
 }
 
 class _LocationListWidgetState extends State<LocationListWidget> {
-  
+  final locations=[
+    {
+      "name":"여행지 이름",
+      "image": 'assets/images/choco.png',
+      "likes":"좋아요 갯수",
+    },
+    {
+      "name":"여행지 이름",
+      "image": 'assets/images/choco.png',
+      "likes":"좋아요 갯수",
+    },
+    {
+      "name":"여행지 이름",
+      "image": 'assets/images/choco.png',
+      "likes":"좋아요 갯수",
+    },
+    {
+      "name":"여행지 이름",
+      "image": 'assets/images/choco.png',
+      "likes":"좋아요 갯수",
+    },
+  ];
   @override
   void initState() {
     super.initState();
@@ -205,7 +226,7 @@ class _LocationListWidgetState extends State<LocationListWidget> {
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(5),
-                  child: GridView(
+                  child: GridView.builder(
                     padding: EdgeInsets.zero,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -213,255 +234,16 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                       mainAxisSpacing: 10,
                       childAspectRatio: 1,
                     ),
+                    itemCount: locations.length,
+                    itemBuilder: (context, index) {
+                      return locationBox(
+                        name: locations[index]["name"].toString(),
+                        image: locations[index]["image"].toString(),
+                        likes: locations[index]["likes"].toString(),
+                      );
+                    },
                     scrollDirection: Axis.vertical,
-                    children: [
-                      Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color:
-                              Colors.white,
-                              border: Border.all(color: Colors.grey),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                'assets/images/choco.png',
-                                width: 140,
-                                height: 140,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(4),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '여행지 이름',
-                                    style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 14,
-                  letterSpacing: 0.0,
-                ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        '좋아요',
-                                        style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 10,
-                  letterSpacing: 0.0,
-                ),
-                                      ),
-                                      Icon(
-                                        Icons.favorite_outlined,
-                                        color: Color(0xFFF9010A),
-                                        size: 24,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color:
-                              Colors.white,
-                              border: Border.all(color: Colors.grey),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                'assets/images/choco.png',
-                                width: 140,
-                                height: 140,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(4),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '여행지 이름',
-                                    style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 14,
-                  letterSpacing: 0.0,
-                ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        '좋아요',
-                                        style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 10,
-                  letterSpacing: 0.0,
-                ),
-                                      ),
-                                      Icon(
-                                        Icons.favorite_outlined,
-                                        color: Color(0xFFF9010A),
-                                        size: 24,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color:
-                              Colors.white,
-                              border: Border.all(color: Colors.grey),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                'assets/images/choco.png',
-                                width: 140,
-                                height: 140,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(4),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '여행지 이름',
-                                    style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 14,
-                  letterSpacing: 0.0,
-                ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        '좋아요',
-                                        style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 10,
-                  letterSpacing: 0.0,
-                ),
-                                      ),
-                                      Icon(
-                                        Icons.favorite_outlined,
-                                        color: Color(0xFFF9010A),
-                                        size: 24,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color:
-                              Colors.white,
-                              border: Border.all(color: Colors.grey),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                'assets/images/choco.png',
-                                width: 140,
-                                height: 140,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(4),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '여행지 이름',
-                                    style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 14,
-                  letterSpacing: 0.0,
-                ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        '좋아요',
-                                        style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 10,
-                  letterSpacing: 0.0,
-                ),
-                                      ),
-                                      Icon(
-                                        Icons.favorite_outlined,
-                                        color: Color(0xFFF9010A),
-                                        size: 24,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                    
                   ),
                 ),
               ),
@@ -470,5 +252,69 @@ class _LocationListWidgetState extends State<LocationListWidget> {
         ),
       ),
     );
+  }
+  Container locationBox({String name="여행지 이름", String image = 'assets/images/choco.png', String likes = "좋아요 갯수"}){
+    return Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color:
+                              Colors.white,
+                              border: Border.all(color: Colors.grey),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.asset(
+                                image,
+                                width: 140,
+                                height: 140,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(4),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    name,
+                                    style: TextStyle(
+                  fontFamily: 'Inter Tight',
+                  color: Colors.black,
+                  fontSize: 14,
+                  letterSpacing: 0.0,
+                ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        likes,
+                                        style: TextStyle(
+                  fontFamily: 'Inter Tight',
+                  color: Colors.black,
+                  fontSize: 10,
+                  letterSpacing: 0.0,
+                ),
+                                      ),
+                                      Icon(
+                                        Icons.favorite_outlined,
+                                        color: Color(0xFFF9010A),
+                                        size: 24,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
   }
 }

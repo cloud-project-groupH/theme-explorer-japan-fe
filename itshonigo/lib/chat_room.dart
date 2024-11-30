@@ -23,6 +23,23 @@ class ChatRoomWidget extends StatefulWidget {
 }
 
 class _ChatRoomWidgetState extends State<ChatRoomWidget> {
+  final chats = [
+    {
+      "name":"닉네임",
+      "image": "assets/images/choco.png",
+      "chat": "채팅 내용"
+    },
+    {
+      "name":"닉네임",
+      "image": "assets/images/choco.png",
+      "chat": "채팅 내용"
+    },
+    {
+      "name":"닉네임",
+      "image": "assets/images/choco.png",
+      "chat": "채팅 내용"
+    }
+  ];
   final TextEditingController _textEditingController = TextEditingController();
   @override
   void initState() {
@@ -85,78 +102,22 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
                     Expanded(
                       child:Align(
                         alignment: Alignment.topCenter,
-                      child: ListView(
+                      child: ListView.builder(
                         reverse: true,
                         
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        children: [
-                          Container(
-                            
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(6),
-                                  child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.asset(
-                                      'assets/images/choco.png',
-                                      fit: BoxFit.cover,
-                                     ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '닉네임',
-                                        style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Container
-                                      (
-                                        decoration: BoxDecoration(
-                                          border: Border.all(color: Colors.black),
-                                           ),
-                                           child: 
-                                                  Text(
-                                                      '채팅내용',
-                                              style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                              
-                                            
-                                       ),
-                                      
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                        itemCount: chats.length,
+                        itemBuilder: (context, index) {
+                          return chatBox(
+                              name:chats[index]["name"].toString(),
+                              image:chats[index]["image"].toString(),
+                              chat:chats[index]["chat"].toString(),
+
+                          );
+                        },
+                        
                       ),
                       ),
                     ),
@@ -214,5 +175,71 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
         ),
       ),
     );
+  }
+  Container chatBox({String name="닉네임",String image="assets/images/choco.png",String chat="채팅 내용"  }){
+    return Container(
+                            
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(6),
+                                  child: Container(
+                                    width: 50,
+                                    height: 50,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Image.asset(
+                                      image,
+                                      fit: BoxFit.cover,
+                                     ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        name,
+                                        style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                      Container
+                                      (
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black),
+                                           ),
+                                           child: 
+                                                  Text(
+                                                      chat,
+                                              style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                              
+                                            
+                                       ),
+                                      
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
   }
 }

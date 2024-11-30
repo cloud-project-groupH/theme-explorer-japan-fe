@@ -23,6 +23,50 @@ class MainPageWidget extends StatefulWidget {
 }
 
 class _MainPageWidgetState extends State<MainPageWidget> {
+  final popularList =[
+    {
+      "image":'assets/images/choco.png',
+      "name":"여행지",
+    },
+    {
+      "image":'assets/images/choco.png',
+      "name":"여행지",
+    },
+    {
+      "image":'assets/images/choco.png',
+      "name":"여행지",
+    },
+    {
+      "image":'assets/images/choco.png',
+      "name":"여행지",
+    }
+  ];
+  final customList=[
+    {
+      "name" : "여행지 이름",
+      "image": 'assets/images/choco.png',
+      "explain": "여행지 설명"
+    },
+    {
+    
+      "name" : "여행지 이름",
+      "image": 'assets/images/choco.png',
+      "explain": "여행지 설명"
+    },
+    {
+    
+      "name" : "여행지 이름",
+      "image": 'assets/images/choco.png',
+      "explain": "여행지 설명"
+    },
+    {
+    
+      "name" : "여행지 이름",
+      "image": 'assets/images/choco.png',
+      "explain": "여행지 설명"
+    }
+
+  ];
   final TextEditingController _textEditingController = TextEditingController();
   @override
   void initState() {
@@ -146,6 +190,11 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+        width: 2,
+        color: Colors.grey,
+    ),
+
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -174,7 +223,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                           color:
                               Colors.white,
                         ),
-                        child: ListView(
+                        child: ListView.separated(
                           padding: EdgeInsets.fromLTRB(
                             5,
                             0,
@@ -183,54 +232,15 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                           ),
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Image.asset(
-                                    'assets/images/choco.png',
-                                    width: 60,
-                                    height: 60,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Text(
-                                  '여행지',
-                                  style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Image.asset(
-                                    'assets/images/choco.png',
-                                    width: 60,
-                                    height: 60,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Text(
-                                  '여행지',
-                                  style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                ),
-                              ],
-                            ),
-                          ]
+                          itemCount: popularList.length,
+                          separatorBuilder: (BuildContext context, int index) => const VerticalDivider(), 
+                          itemBuilder: (context, index) {
+                            return popular(
+                              name: popularList[index]["name"].toString(),
+                              image: popularList[index]["image"].toString(),
+                            );
+                          },
+                          
                         ),
                       ),
                     ],
@@ -246,6 +256,10 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+        width: 2,
+        color: Colors.grey,
+    ),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -282,116 +296,20 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                   topRight: Radius.circular(0),
                                 ),
                               ),
-                              child: ListView(
+                              child: ListView.separated(
                                 padding: EdgeInsets.zero,
+                                separatorBuilder: (BuildContext context, int index) => const Divider(), 
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: Image.asset(
-                                          'assets/images/choco.png',
-                                          width: 120,
-                                          height: 100,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: EdgeInsets.all(5),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.all(5),
-                                                child: Text(
-                                                  '여행지이름',
-                                                  style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                                ),
-                                              ),
-                                              Text(
-                                                '여행지 설명',
-                                                style:
-                                                    TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: Image.asset(
-                                          'assets/images/choco.png',
-                                          width: 120,
-                                          height: 100,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: EdgeInsets.all(5),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.all(5),
-                                                child: Text(
-                                                  '여행지이름',
-                                                  style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                                ),
-                                              ),
-                                              Text(
-                                                '여행지 설명',
-                                                style:
-                                                    TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                itemCount: customList.length,
+                                itemBuilder: (context, index) {
+                                  return custom(
+                                    name:customList[index]["name"].toString(),
+                                    image:customList[index]["image"].toString(),
+                                    explain:customList[index]["explain"].toString(),
+                                  );
+                                },
+                                
                               ),
                             ),
                           ),
@@ -406,5 +324,84 @@ class _MainPageWidgetState extends State<MainPageWidget> {
         ),
       ),
     );
+  }
+  Column popular({String image='assets/images/choco.png',String name="여행지"}){
+    return Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    image,
+                                    width: 60,
+                                    height: 60,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Text(
+                                  name,
+                                  style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                ),
+                              ],
+                            );
+  }
+  Row custom({String name = "여행지 이름", String image = 'assets/images/choco.png', String explain = "여행지 설명"}){
+    return Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: Image.asset(
+                                          image,
+                                          width: 120,
+                                          height: 100,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Text(
+                                                  name,
+                                                  style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                                ),
+                                              ),
+                                              Text(
+                                                explain,
+                                                style:
+                                                    TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
   }
 }
