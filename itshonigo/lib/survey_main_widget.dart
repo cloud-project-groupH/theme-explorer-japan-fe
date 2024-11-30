@@ -25,7 +25,7 @@ class SurveyMainWidget extends StatefulWidget {
 class _SurveyMainWidgetState extends State<SurveyMainWidget> {
 
   
-
+  var color1 = Colors.blue;
   @override
   void initState() {
     super.initState();
@@ -97,15 +97,26 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   width: 300,
                   height: 40,
                   child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-
-                      
-                      foregroundColor: Colors.grey,
-                      backgroundColor: Colors.blueAccent,
-                      
-                      
-                      
+                    onPressed: (){
+                      print(color1);
+                      if(color1 == Colors.blue){
+                        color1 = Colors.grey;
+                      }
+                      else if(color1 == Colors.grey){
+                        color1 = Colors.blue;
+                      }
+                    },
+                    style: ButtonStyle(
+                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      backgroundColor: WidgetStateProperty.resolveWith(
+                        (states){
+                          if (states.contains(WidgetState.pressed)) {
+                             return color1;
+                          } else {
+                            return color1;
+                          }
+                        }
+                      ),
                     ),
                     child: Text('역사/문화 탐방',
                             style: TextStyle(
@@ -119,15 +130,26 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   width: 300,
                   height: 40,
                   child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-
-                      
-                      foregroundColor: Colors.grey,
-                      backgroundColor: Colors.blueAccent,
-                      
-                      
-                      
+                    onPressed: (){
+                      print(color1);
+                      if(color1 == Colors.blue){
+                        color1 = Colors.grey;
+                      }
+                      else if(color1 == Colors.grey){
+                        color1 = Colors.blue;
+                      }
+                    },
+                    style: ButtonStyle(
+                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      backgroundColor: WidgetStateProperty.resolveWith(
+                        (states){
+                          if (states.contains(WidgetState.pressed)) {
+                             return color1;
+                          } else {
+                            return color1;
+                          }
+                        }
+                      ),
                     ),
                     child: Text('유명 관광지',
                             style: TextStyle(
@@ -141,15 +163,26 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   width: 300,
                   height: 40,
                   child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-
-                      
-                      foregroundColor: Colors.grey,
-                      backgroundColor: Colors.blueAccent,
-                      
-                      
-                      
+                    onPressed: (){
+                      print(color1);
+                      if(color1 == Colors.blue){
+                        color1 = Colors.grey;
+                      }
+                      else if(color1 == Colors.grey){
+                        color1 = Colors.blue;
+                      }
+                    },
+                    style: ButtonStyle(
+                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      backgroundColor: WidgetStateProperty.resolveWith(
+                        (states){
+                          if (states.contains(WidgetState.pressed)) {
+                             return color1;
+                          } else {
+                            return color1;
+                          }
+                        }
+                      ),
                     ),
                     child: Text('맛집 탐방',
                             style: TextStyle(
@@ -163,15 +196,26 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   width: 300,
                   height: 40,
                   child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-
-                      
-                      foregroundColor: Colors.grey,
-                      backgroundColor: Colors.blueAccent,
-                      
-                      
-                      
+                    onPressed: (){
+                      print(color1);
+                      if(color1 == Colors.blue){
+                        color1 = Colors.grey;
+                      }
+                      else if(color1 == Colors.grey){
+                        color1 = Colors.blue;
+                      }
+                    },
+                    style: ButtonStyle(
+                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      backgroundColor: WidgetStateProperty.resolveWith(
+                        (states){
+                          if (states.contains(WidgetState.pressed)) {
+                             return color1;
+                          } else {
+                            return color1;
+                          }
+                        }
+                      ),
                     ),
                     child: Text('자연&힐링',
                             style: TextStyle(
@@ -185,15 +229,26 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   width: 300,
                   height: 40,
                   child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-
-                      
-                      foregroundColor: Colors.grey,
-                      backgroundColor: Colors.blueAccent,
-                      
-                      
-                      
+                    onPressed: (){
+                      print(color1);
+                      if(color1 == Colors.blue){
+                        color1 = Colors.grey;
+                      }
+                      else if(color1 == Colors.grey){
+                        color1 = Colors.blue;
+                      }
+                    },
+                    style: ButtonStyle(
+                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      backgroundColor: WidgetStateProperty.resolveWith(
+                        (states){
+                          if (states.contains(WidgetState.pressed)) {
+                             return color1;
+                          } else {
+                            return color1;
+                          }
+                        }
+                      ),
                     ),
                     child: Text('이색 관광지',
                             style: TextStyle(
