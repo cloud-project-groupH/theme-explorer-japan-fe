@@ -25,7 +25,32 @@ class LocationPageWidget extends StatefulWidget {
 class _LocationPageWidgetState extends State<LocationPageWidget> {
   
 
-  
+  final chatRooms = [
+    {
+      "name":"채팅방 이름", 
+      "image":'assets/images/choco.png',
+       "explain": "채팅방 설명",
+       "number": "참가자 수"
+    },
+    {
+      "name":"채팅방 이름", 
+      "image":'assets/images/choco.png',
+       "explain": "채팅방 설명",
+       "number": "참가자 수"
+    },
+    {
+      "name":"채팅방 이름", 
+      "image":'assets/images/choco.png',
+       "explain": "채팅방 설명",
+       "number": "참가자 수"
+    },
+    {
+      "name":"채팅방 이름", 
+      "image":'assets/images/choco.png',
+       "explain": "채팅방 설명",
+       "number": "참가자 수"
+    }
+  ];
 
   @override
   void initState() {
@@ -260,296 +285,21 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                               ),
                             ),
                             Expanded(
-                              child: ListView(
+                              child: ListView.separated(
                                 padding: EdgeInsets.zero,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(5),
-                                    child: Container(
-                                      width: 100,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(5),
-                                            child: Container(
-                                              width: 80,
-                                              height: 80,
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Image.asset(
-                                                'assets/images/choco.png',
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            '채팅방이름',
-                                                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.black,
-                            fontSize: 16,
-                          ),
-                                                          ),
-                                                          Text(
-                                                            '채팅방 설명',
-                                                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.black,
-                            fontSize: 12,
-                          ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      Text(
-                                                        '참가자 수',
-                                                        style:
-                                                            TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.black,
-                            fontSize: 14,
-                          ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                   Padding(
-                                    padding: EdgeInsets.all(5),
-                                    child: Container(
-                                      width: 100,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(5),
-                                            child: Container(
-                                              width: 80,
-                                              height: 80,
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Image.asset(
-                                                'assets/images/choco.png',
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            '채팅방이름',
-                                                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.black,
-                            fontSize: 16,
-                          ),
-                                                          ),
-                                                          Text(
-                                                            '채팅방 설명',
-                                                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.black,
-                            fontSize: 12,
-                          ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      Text(
-                                                        '참가자 수',
-                                                        style:
-                                                            TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.black,
-                            fontSize: 14,
-                          ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ), Padding(
-                                    padding: EdgeInsets.all(5),
-                                    child: Container(
-                                      width: 100,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(5),
-                                            child: Container(
-                                              width: 80,
-                                              height: 80,
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Image.asset(
-                                                'assets/images/choco.png',
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            '채팅방이름',
-                                                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.black,
-                            fontSize: 16,
-                          ),
-                                                          ),
-                                                          Text(
-                                                            '채팅방 설명',
-                                                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.black,
-                            fontSize: 12,
-                          ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      Text(
-                                                        '참가자 수',
-                                                        style:
-                                                            TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.black,
-                            fontSize: 14,
-                          ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                separatorBuilder: (BuildContext context, int index) => const Divider(), 
+                                itemCount: chatRooms.length,
+                                itemBuilder: (context, index) {
+                                  return chatRoom(
+                                      name: chatRooms[index]["name"].toString(),
+                                      image: chatRooms[index]["image"].toString(),
+                                      explain: chatRooms[index]["explain"].toString(),
+                                      number: chatRooms[index]["number"].toString(),
+                                  );
+                                },
+                                
                               ),
                             ),
                           ],
@@ -564,5 +314,102 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
         ),
       ),
     );
+  }
+  Padding chatRoom({String name="채팅방 이름",String image = 'assets/images/choco.png',String explain = "채팅방 설명",String number = "참가자 수"}){
+    return Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(5),
+                                            child: Container(
+                                              width: 80,
+                                              height: 80,
+                                              clipBehavior: Clip.antiAlias,
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Image.asset(
+                                                image,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsets.all(5),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            name,
+                                                            style: TextStyle(
+                            fontFamily: 'Inter',
+                            letterSpacing: 0.0,
+                            color: Colors.black,
+                            fontSize: 16,
+                          ),
+                                                          ),
+                                                          Text(
+                                                            explain,
+                                                            style: TextStyle(
+                            fontFamily: 'Inter',
+                            letterSpacing: 0.0,
+                            color: Colors.black,
+                            fontSize: 12,
+                          ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        number,
+                                                        style:
+                                                            TextStyle(
+                            fontFamily: 'Inter',
+                            letterSpacing: 0.0,
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
   }
 }
