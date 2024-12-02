@@ -26,6 +26,10 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
 
   
   var color1 = Colors.blue;
+  var color2 = Colors.blue;
+  var color3 = Colors.blue;
+  var color4 = Colors.blue;
+  var color5 = Colors.blue;
   @override
   void initState() {
     super.initState();
@@ -131,12 +135,12 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   height: 40,
                   child: TextButton(
                     onPressed: (){
-                      print(color1);
-                      if(color1 == Colors.blue){
-                        color1 = Colors.grey;
+                      print(color2);
+                      if(color2 == Colors.blue){
+                        color2 = Colors.grey;
                       }
-                      else if(color1 == Colors.grey){
-                        color1 = Colors.blue;
+                      else if(color2 == Colors.grey){
+                        color2 = Colors.blue;
                       }
                     },
                     style: ButtonStyle(
@@ -144,9 +148,9 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       backgroundColor: WidgetStateProperty.resolveWith(
                         (states){
                           if (states.contains(WidgetState.pressed)) {
-                             return color1;
+                             return color2;
                           } else {
-                            return color1;
+                            return color2;
                           }
                         }
                       ),
@@ -164,12 +168,12 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   height: 40,
                   child: TextButton(
                     onPressed: (){
-                      print(color1);
-                      if(color1 == Colors.blue){
-                        color1 = Colors.grey;
+                      print(color3);
+                      if(color3 == Colors.blue){
+                        color3 = Colors.grey;
                       }
-                      else if(color1 == Colors.grey){
-                        color1 = Colors.blue;
+                      else if(color3 == Colors.grey){
+                        color3 = Colors.blue;
                       }
                     },
                     style: ButtonStyle(
@@ -177,9 +181,9 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       backgroundColor: WidgetStateProperty.resolveWith(
                         (states){
                           if (states.contains(WidgetState.pressed)) {
-                             return color1;
+                             return color3;
                           } else {
-                            return color1;
+                            return color3;
                           }
                         }
                       ),
@@ -197,12 +201,12 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   height: 40,
                   child: TextButton(
                     onPressed: (){
-                      print(color1);
-                      if(color1 == Colors.blue){
-                        color1 = Colors.grey;
+                      print(color4);
+                      if(color4 == Colors.blue){
+                        color4 = Colors.grey;
                       }
-                      else if(color1 == Colors.grey){
-                        color1 = Colors.blue;
+                      else if(color4 == Colors.grey){
+                        color4 = Colors.blue;
                       }
                     },
                     style: ButtonStyle(
@@ -210,9 +214,9 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       backgroundColor: WidgetStateProperty.resolveWith(
                         (states){
                           if (states.contains(WidgetState.pressed)) {
-                             return color1;
+                             return color4;
                           } else {
-                            return color1;
+                            return color4;
                           }
                         }
                       ),
@@ -230,12 +234,12 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   height: 40,
                   child: TextButton(
                     onPressed: (){
-                      print(color1);
-                      if(color1 == Colors.blue){
-                        color1 = Colors.grey;
+                      print(color5);
+                      if(color5 == Colors.blue){
+                        color5 = Colors.grey;
                       }
-                      else if(color1 == Colors.grey){
-                        color1 = Colors.blue;
+                      else if(color5 == Colors.grey){
+                        color5 = Colors.blue;
                       }
                     },
                     style: ButtonStyle(
@@ -243,9 +247,9 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       backgroundColor: WidgetStateProperty.resolveWith(
                         (states){
                           if (states.contains(WidgetState.pressed)) {
-                             return color1;
+                             return color5;
                           } else {
-                            return color1;
+                            return color5;
                           }
                         }
                       ),
