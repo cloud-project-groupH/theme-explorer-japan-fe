@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class LoginPageWidget extends StatefulWidget {
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
-  
+  final url = Uri.parse("http://localhost:8080/oauth2/kakao");
 
  
 
@@ -71,13 +72,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   alignment: AlignmentDirectional(0, 1),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      'assets/images/kakao_login_large_wide.png',
+                    child: GestureDetector(
+                        onTap: (){
+                        launchUrl(url);
+                        
+                        },
+                      child: Image(
+                      
+                      image: AssetImage('assets/images/kakao_login_large_wide.png'),
+                      
                       width: 288,
                       height: 89,
                       fit: BoxFit.fitWidth,
                       alignment: Alignment(0, 0),
+                      
                     ),
+                     
+                    )
+
                   ),
                 ),
               ],

@@ -11,7 +11,7 @@ import 'my_page.dart';
 import 'likes_page.dart';
 void main() {
 
-  runApp(MainApp());
+  runApp(LoginPage());
 
 }
 class MainApp extends StatelessWidget {
