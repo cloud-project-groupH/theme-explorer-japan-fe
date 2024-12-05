@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 class ChatRoom extends StatelessWidget {
   final _title = 'chat room';
 
+  const ChatRoom({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -62,13 +64,13 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
       
-        backgroundColor: Color(0xffF1F4F8),
+        backgroundColor: const Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           leading: IconButton(
            
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
               size: 24,
@@ -77,7 +79,7 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
               print('IconButton pressed ...');
             },
           ),
-          title: Text(
+          title: const Text(
             '채팅방 이름',
             style:TextStyle(
                   fontFamily: 'Inter Tight',
@@ -86,7 +88,7 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 2,
         ),
@@ -121,7 +123,7 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
                       ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: 350,
                       child: TextFormField(
                         controller: _textEditingController,
@@ -133,14 +135,14 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
                                            
                           hintText: '채팅을입력하세요',
                           hintStyle:
-                              TextStyle(
+                              const TextStyle(
                                               color: Colors.grey,
                                               fontSize: 14,
                                               fontFamily: 'Inter',
                                               letterSpacing: 0.0,
                                             ),
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.black,
                               width: 1,
                             ),
@@ -152,12 +154,12 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
                           filled: true,
                           fillColor:
                               Colors.white,
-                          suffixIcon: Icon(
+                          suffixIcon: const Icon(
                             Icons.send,
                             color: Colors.black,
                           ),
                         ),
-                        style: TextStyle(
+                        style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
                                               fontFamily: 'Inter',
@@ -179,19 +181,19 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
   Container chatBox({String name="닉네임",String image="assets/images/choco.png",String chat="채팅 내용"  }){
     return Container(
                             
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.all(6),
+                                  padding: const EdgeInsets.all(6),
                                   child: Container(
                                     width: 50,
                                     height: 50,
                                     clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.asset(
@@ -209,7 +211,7 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
                                     children: [
                                       Text(
                                         name,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
                                               fontFamily: 'Inter',
@@ -224,7 +226,7 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
                                            child: 
                                                   Text(
                                                       chat,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
                                               fontFamily: 'Inter',

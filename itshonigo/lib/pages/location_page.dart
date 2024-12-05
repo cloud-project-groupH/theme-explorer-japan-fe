@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 class LocationPage extends StatelessWidget {
   final _title = 'location page';
 
+  const LocationPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -71,13 +73,13 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         
-        backgroundColor: Color(0xffF1F4F8),
+        backgroundColor: const Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           leading: IconButton(
             
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
               size: 24,
@@ -86,7 +88,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
               print('IconButton pressed ...');
             },
           ),
-          title: Text(
+          title: const Text(
             '여행지 이름',
             style: TextStyle(
                   fontFamily: 'Inter Tight',
@@ -95,14 +97,14 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 2,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0, 0),
+            alignment: const AlignmentDirectional(0, 0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -123,7 +125,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Row(
+                          const Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
@@ -144,7 +146,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
+                              const Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Row(
@@ -194,7 +196,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                 children: [
                                   IconButton(
                                     
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.map,
                                       color: Colors.black,
                                       size: 24,
@@ -205,7 +207,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                   ),
                                  IconButton(
                                     
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.check,
                                       color: Colors.black,
                                       size: 24,
@@ -216,7 +218,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                   ),
                                   IconButton(
                                     
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.favorite,
                                       color: Color(0xFFFF0303),
                                       size: 24,
@@ -236,13 +238,13 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsets.all(4),
+                              padding: const EdgeInsets.all(4),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     '채팅방목록',
                                     style: TextStyle(
                   fontFamily: 'Inter Tight',
@@ -258,19 +260,10 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                     onPressed: () {
                                       print('Button pressed ...');
                                     },
-                                    
-                                         
-                                      child: Text('여행 날짜 선택',
-                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.blue,
-                            fontSize: 14,
-                          ),),
                           style: OutlinedButton.styleFrom(
                                       elevation: 0,
                                       
-                                      side: BorderSide(
+                                      side: const BorderSide(
                                         color: Colors.blue
                                       ),
                                       shape: RoundedRectangleBorder(
@@ -280,6 +273,15 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                       
                                     
                                   ),
+                                    
+                                         
+                                      child: Text('여행 날짜 선택',
+                            style: TextStyle(
+                            fontFamily: 'Inter',
+                            letterSpacing: 0.0,
+                            color: Colors.blue,
+                            fontSize: 14,
+                          ),),
                                   ),),
                                 ],
                               ),
@@ -317,7 +319,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
   }
   Padding chatRoom({String name="채팅방 이름",String image = 'assets/images/choco.png',String explain = "채팅방 설명",String number = "참가자 수"}){
     return Padding(
-                                    padding: EdgeInsets.all(5),
+                                    padding: const EdgeInsets.all(5),
                                     child: Container(
                                       width: 100,
                                       height: 100,
@@ -332,12 +334,12 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.all(5),
+                                            padding: const EdgeInsets.all(5),
                                             child: Container(
                                               width: 80,
                                               height: 80,
                                               clipBehavior: Clip.antiAlias,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Image.asset(
@@ -348,7 +350,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsets.all(5),
+                                              padding: const EdgeInsets.all(5),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -365,7 +367,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                         children: [
                                                           Text(
                                                             name,
-                                                            style: TextStyle(
+                                                            style: const TextStyle(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
                             color: Colors.black,
@@ -374,7 +376,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                           ),
                                                           Text(
                                                             explain,
-                                                            style: TextStyle(
+                                                            style: const TextStyle(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
                             color: Colors.black,
@@ -394,7 +396,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                       Text(
                                                         number,
                                                         style:
-                                                            TextStyle(
+                                                            const TextStyle(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
                             color: Colors.black,

@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 class LikesPage extends StatelessWidget {
   final _title = 'location page';
 
+  const LikesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -63,13 +65,13 @@ class _LikesPageWidgetState extends State<LikesPageWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
        
-        backgroundColor: Color(0xffF1F4F8),
+        backgroundColor: const Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           leading: IconButton(
             
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
               size: 30,
@@ -78,7 +80,7 @@ class _LikesPageWidgetState extends State<LikesPageWidget> {
              
             },
           ),
-          title: Text(
+          title: const Text(
             '좋아요 목록',
             style: TextStyle(
                   fontFamily: 'Inter Tight',
@@ -87,7 +89,7 @@ class _LikesPageWidgetState extends State<LikesPageWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 2,
         ),
@@ -120,7 +122,7 @@ class _LikesPageWidgetState extends State<LikesPageWidget> {
   }
   Padding likeBox({String name="여행지 이름",String explain="여행지 설명",String image= 'assets/images/choco.png'}){
     return Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Container(
                       width: 100,
                       height: 100,
@@ -128,7 +130,7 @@ class _LikesPageWidgetState extends State<LikesPageWidget> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(0),
                         border: Border.all(
-                          color: Color(0xFF707070),
+                          color: const Color(0xFF707070),
                         ),
                       ),
                       child: Row(
@@ -136,16 +138,16 @@ class _LikesPageWidgetState extends State<LikesPageWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   child: Text(
                                     name,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                           fontFamily: 'Inter',
                                           color:Colors.black,
                                           fontSize: 16,
@@ -155,14 +157,14 @@ class _LikesPageWidgetState extends State<LikesPageWidget> {
                                 ),
                                 Text(
                                   explain,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color:Colors.black,
                                           fontSize: 14,
                                         fontFamily: 'Inter',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
-                                Row(
+                                const Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Icon(
@@ -196,7 +198,7 @@ class _LikesPageWidgetState extends State<LikesPageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
