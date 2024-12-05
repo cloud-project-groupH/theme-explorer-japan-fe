@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 class ChatRoomList extends StatelessWidget {
   final _title = 'chat room list';
 
+  const ChatRoomList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -75,13 +77,13 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         
-        backgroundColor: Color(0xffF1F4F8),
+        backgroundColor: const Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           leading: IconButton(
             
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
               size: 24,
@@ -90,7 +92,7 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
               print('IconButton pressed ...');
             },
           ),
-          title: Text(
+          title: const Text(
             '채팅방',
             style: TextStyle(
                   fontFamily: 'Inter Tight',
@@ -99,7 +101,7 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 2,
         ),
@@ -140,11 +142,11 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
   return Container(
                       width: MediaQuery.sizeOf(context).width,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xffF1F4F8),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -153,7 +155,7 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
                               width: 50,
                               height: 50,
                               clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.asset(
@@ -163,7 +165,7 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsets.all(4),
+                                padding: const EdgeInsets.all(4),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -178,7 +180,7 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
                                         children: [
                                           Text(
                                             name,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                   fontFamily: 'Inter Tight',
                                                   color: Colors.black,
                                                   fontSize: 16,
@@ -187,7 +189,7 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
                                           ),
                                           Text(
                                             recentDate,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                   fontFamily: 'Inter Tight',
                                                   color: Colors.black,
                                                   fontSize: 14,
@@ -205,7 +207,7 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
                                         children: [
                                           Text(
                                             recent,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                   fontFamily: 'Inter Tight',
                                                   color: Colors.black,
                                                   fontSize: 12,
@@ -214,7 +216,7 @@ class _ChatRoomListWidgetState extends State<ChatRoomListWidget> {
                                           ),
                                           Text(
                                             number,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                   fontFamily: 'Inter Tight',
                                                   color: Colors.orange,
                                                   fontSize: 12,

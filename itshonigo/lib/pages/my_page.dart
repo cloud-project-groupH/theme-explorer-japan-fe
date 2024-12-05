@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 class MyPage extends StatelessWidget {
   final _title = 'location page';
 
+  const MyPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,14 +47,14 @@ class _MyPageWidgetState extends State<MyPageWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
        
-        backgroundColor: Color(0xffF1F4F8),
+        backgroundColor: const Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.blue,
           automaticallyImplyLeading: false,
           leading: IconButton(
             
             
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.white,
               size: 24,
@@ -61,7 +63,7 @@ class _MyPageWidgetState extends State<MyPageWidget> {
               print('IconButton pressed ...');
             },
           ),
-          title: Text(
+          title: const Text(
             '마이페이지',
             style: TextStyle(
                   fontFamily: 'Inter Tight',
@@ -70,7 +72,7 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 0,
         ),
@@ -86,25 +88,25 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                     Container(
                       width: MediaQuery.sizeOf(context).width,
                       height: 200,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.blue,
                       ),
                       child: Container(
                         height: 100,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(15),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsets.all(5),
+                                padding: const EdgeInsets.all(5),
                                 child: Container(
                                   width: 60,
                                   height: 60,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.asset(
@@ -113,7 +115,7 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                                   ),
                                 ),
                               ),
-                              Column(
+                              const Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
@@ -148,7 +150,7 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width,
                         height: 220,
@@ -160,18 +162,18 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsets.all(5),
+                                padding: const EdgeInsets.all(5),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
+                                    const Text(
                                       '여행 지도',
                                       style: TextStyle(
                                             color: Colors.black,
@@ -182,7 +184,7 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                                     ),
                                     IconButton(
                                       
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.arrow_forward_ios,
                                         color: Colors.black,
                                         size: 24,
@@ -194,18 +196,18 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 thickness: 2,
                                 color: Colors.grey,
                               ),
                               Padding(
-                                padding: EdgeInsets.all(5),
+                                padding: const EdgeInsets.all(5),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
+                                    const Text(
                                       '좋아요 목록',
                                       style: TextStyle(
                                             color: Colors.black,
@@ -216,7 +218,7 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                                     ),
                                     IconButton(
                                       
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.arrow_forward_ios,
                                         color: Colors.black,
                                         size: 24,
@@ -228,18 +230,18 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 thickness: 2,
                                 color: Colors.grey,
                               ),
                               Padding(
-                                padding: EdgeInsets.all(5),
+                                padding: const EdgeInsets.all(5),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
+                                    const Text(
                                       '로그아웃',
                                       style: TextStyle(
                                             color: Colors.black,
@@ -250,7 +252,7 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                                     ),
                                     IconButton(
                                       
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.arrow_forward_ios,
                                         color: Color(0xFF060606),
                                         size: 24,

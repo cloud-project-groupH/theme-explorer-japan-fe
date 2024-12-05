@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:itshownigo/chat_room_list.dart';
-import 'package:itshownigo/likes_page.dart';
-import 'package:itshownigo/location_page.dart';
-import 'package:itshownigo/main_page.dart';
+import 'package:itshownigo/pages/chat_room_list.dart';
+import 'package:itshownigo/pages/likes_page.dart';
+import 'package:itshownigo/pages/location_page.dart';
+import 'package:itshownigo/pages/main_page.dart';
 import 'login_page_widget.dart';
 import 'survey_main_widget.dart';
 import 'chat_room.dart';
@@ -15,6 +15,8 @@ void main() {
 
 }
 class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class MainApp extends StatelessWidget {
 }
 
 class MainWidget extends StatefulWidget {
-  const MainWidget({Key? key}) : super(key: key);
+  const MainWidget({super.key});
 
   @override
   State<MainWidget> createState() => MainWidgetState();

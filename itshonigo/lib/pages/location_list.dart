@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 class LocationList extends StatelessWidget {
   final _title = 'location list';
 
+  const LocationList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,13 +66,13 @@ class _LocationListWidgetState extends State<LocationListWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         
-        backgroundColor: Color(0xffF1F4F8),
+        backgroundColor: const Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           leading: IconButton(
             
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
               size: 24,
@@ -79,7 +81,7 @@ class _LocationListWidgetState extends State<LocationListWidget> {
               print('IconButton pressed ...');
             },
           ),
-          title: Text(
+          title: const Text(
             '추천 여행지 목록',
             style: TextStyle(
                   fontFamily: 'Inter Tight',
@@ -88,7 +90,7 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 2,
         ),
@@ -100,28 +102,28 @@ class _LocationListWidgetState extends State<LocationListWidget> {
               Container(
                 width: MediaQuery.sizeOf(context).width,
                 height: 50,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: Container(
                               width: 70,
                               height: 30,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
                               ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Text(
+                              alignment: const AlignmentDirectional(0, 0),
+                              child: const Text(
                                 '맛집 탐방',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -133,7 +135,7 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                             child: VerticalDivider(
                               thickness: 2,
@@ -141,15 +143,15 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: Container(
                               width: 70,
                               height: 30,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
                               ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Text(
+                              alignment: const AlignmentDirectional(0, 0),
+                              child: const Text(
                                 '관광지',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -161,7 +163,7 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                             child: VerticalDivider(
                               thickness: 2,
@@ -169,15 +171,15 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: Container(
                               width: 70,
                               height: 30,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
                               ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Text(
+                              alignment: const AlignmentDirectional(0, 0),
+                              child: const Text(
                                 '역사/문화',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -189,7 +191,7 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                             child: VerticalDivider(
                               thickness: 2,
@@ -197,15 +199,15 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: Container(
                               width: 70,
                               height: 30,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
                               ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Text(
+                              alignment: const AlignmentDirectional(0, 0),
+                              child: const Text(
                                 '자연/힐링',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -225,10 +227,10 @@ class _LocationListWidgetState extends State<LocationListWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: GridView.builder(
                     padding: EdgeInsets.zero,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
@@ -276,7 +278,7 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(4),
+                              padding: const EdgeInsets.all(4),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -284,7 +286,7 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                                 children: [
                                   Text(
                                     name,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                   fontFamily: 'Inter Tight',
                   color: Colors.black,
                   fontSize: 14,
@@ -296,14 +298,14 @@ class _LocationListWidgetState extends State<LocationListWidget> {
                                     children: [
                                       Text(
                                         likes,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                   fontFamily: 'Inter Tight',
                   color: Colors.black,
                   fontSize: 10,
                   letterSpacing: 0.0,
                 ),
                                       ),
-                                      Icon(
+                                      const Icon(
                                         Icons.favorite_outlined,
                                         color: Color(0xFFF9010A),
                                         size: 24,

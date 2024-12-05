@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 class SurveyMain extends StatelessWidget {
   final _title = 'survey main';
 
+  const SurveyMain({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,13 +51,13 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
       debugShowCheckedModeBanner:false,
       
       home: Scaffold(
-        backgroundColor: Color(0xffF1F4F8),
+        backgroundColor: const Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           leading:IconButton(
             
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
               size: 24,
@@ -64,7 +66,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
               print('IconButton pressed ...');
             },
           ),
-          title: Text(
+          title: const Text(
             '설문 조사',
             style: TextStyle(
                   fontFamily: 'Inter Tight',
@@ -73,24 +75,24 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 2,
         ),
         body:  Align(
-            alignment: AlignmentDirectional(0, 0),
+            alignment: const AlignmentDirectional(0, 0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
+                const Text(
                   'Q1',
                   style: TextStyle(
                         fontFamily: 'Inter Tight',
                         letterSpacing: 0.0,
                       ),
                 ),
-                Text(
+                const Text(
                   '어떤 주제의 여행을 하고 싶으신가요?',
                   style: TextStyle(
                         fontFamily: 'Inter',
@@ -111,7 +113,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       }
                     },
                     style: ButtonStyle(
-                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
                       backgroundColor: WidgetStateProperty.resolveWith(
                         (states){
                           if (states.contains(WidgetState.pressed)) {
@@ -122,7 +124,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                         }
                       ),
                     ),
-                    child: Text('역사/문화 탐방',
+                    child: const Text('역사/문화 탐방',
                             style: TextStyle(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
@@ -144,7 +146,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       }
                     },
                     style: ButtonStyle(
-                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
                       backgroundColor: WidgetStateProperty.resolveWith(
                         (states){
                           if (states.contains(WidgetState.pressed)) {
@@ -155,7 +157,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                         }
                       ),
                     ),
-                    child: Text('유명 관광지',
+                    child: const Text('유명 관광지',
                             style: TextStyle(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
@@ -177,7 +179,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       }
                     },
                     style: ButtonStyle(
-                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
                       backgroundColor: WidgetStateProperty.resolveWith(
                         (states){
                           if (states.contains(WidgetState.pressed)) {
@@ -188,7 +190,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                         }
                       ),
                     ),
-                    child: Text('맛집 탐방',
+                    child: const Text('맛집 탐방',
                             style: TextStyle(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
@@ -210,7 +212,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       }
                     },
                     style: ButtonStyle(
-                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
                       backgroundColor: WidgetStateProperty.resolveWith(
                         (states){
                           if (states.contains(WidgetState.pressed)) {
@@ -221,7 +223,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                         }
                       ),
                     ),
-                    child: Text('자연&힐링',
+                    child: const Text('자연&힐링',
                             style: TextStyle(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
@@ -243,7 +245,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       }
                     },
                     style: ButtonStyle(
-                      foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
                       backgroundColor: WidgetStateProperty.resolveWith(
                         (states){
                           if (states.contains(WidgetState.pressed)) {
@@ -254,7 +256,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                         }
                       ),
                     ),
-                    child: Text('이색 관광지',
+                    child: const Text('이색 관광지',
                             style: TextStyle(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
@@ -276,7 +278,7 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       
                       
                     ),
-                    child: Text('다음으로 넘어가기',
+                    child: const Text('다음으로 넘어가기',
                             style: TextStyle(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,

@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 class MainPage extends StatelessWidget {
   final _title = 'main page';
 
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -87,7 +89,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         
-        backgroundColor: Color(0xffF1F4F8),
+        backgroundColor: const Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
@@ -98,7 +100,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                 width: 40,
                 height: 40,
                 clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                 ),
                 child: Image.asset(
@@ -108,7 +110,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                     fit: BoxFit.cover,
                                   ),
               ),
-              Text(
+              const Text(
                 '사용자이름',
                 style: TextStyle(
                       fontFamily: 'Inter',
@@ -118,7 +120,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
               ),
             ],
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2,
         ),
@@ -132,8 +134,8 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Container(
+                      padding: const EdgeInsets.all(10),
+                      child: SizedBox(
                         width: 350,
                         child: TextFormField(
                           controller: _textEditingController,
@@ -144,14 +146,14 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                             isDense: true,
                             
                             hintText: '검색',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                                               color: Colors.grey,
                                               fontSize: 14,
                                               fontFamily: 'Inter',
                                               letterSpacing: 0.0,
                                             ),
                             border: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.black,
                                 width: 1,
                               ),
@@ -162,13 +164,13 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                             
                             filled: true,
                             fillColor: Colors.white,
-                            suffixIcon: Icon(
+                            suffixIcon: const Icon(
                               Icons.search,
                               color: Colors.black,
                             ),
                           ),
                           style:
-                              TextStyle(
+                              const TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
                                               fontFamily: 'Inter',
@@ -183,7 +185,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width,
                   height: 140,
@@ -199,7 +201,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Row(
+                      const Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
@@ -219,12 +221,12 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                       Container(
                         width: MediaQuery.sizeOf(context).width,
                         height: 100,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color:
                               Colors.white,
                         ),
                         child: ListView.separated(
-                          padding: EdgeInsets.fromLTRB(
+                          padding: const EdgeInsets.fromLTRB(
                             5,
                             0,
                             5,
@@ -249,7 +251,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width,
                     height: 100,
@@ -264,7 +266,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Row(
+                        const Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
@@ -283,11 +285,11 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width,
                               height: 100,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0),
@@ -340,7 +342,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                 ),
                                 Text(
                                   name,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
                                               fontFamily: 'Inter',
@@ -367,7 +369,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                       ),
                                       Expanded(
                                         child: Padding(
-                                          padding: EdgeInsets.all(5),
+                                          padding: const EdgeInsets.all(5),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -376,10 +378,10 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.all(5),
+                                                padding: const EdgeInsets.all(5),
                                                 child: Text(
                                                   name,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
                                               fontFamily: 'Inter',
@@ -390,7 +392,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                               Text(
                                                 explain,
                                                 style:
-                                                    TextStyle(
+                                                    const TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
                                               fontFamily: 'Inter',
