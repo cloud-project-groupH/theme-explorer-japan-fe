@@ -1,17 +1,20 @@
-import '../place/place.dart';
-import '../member/member.dart';
 
-class Visited {
-  final int id;
+
+import '../member/member.dart';
+import '../chat/chatRoom.dart';
+
+class Participant {
   final DateTime? createdAt;
   final DateTime? updatedAt;
-  final Place? place;
+  final int id;
+  final ChatRoom? chatRoom;
   final Member? member;
 
-  Visited({required this.id, required this.createdAt, required this.updatedAt, required this.member, required this.place});
 
-  factory Visited.fromJson(Map<String, dynamic> json) {
-    return Visited(
+  Participant({required this.createdAt, required this.updatedAt, required this.id, required this.chatRoom, required this.member});
+  
+  factory Participant.fromJson(Map<String, dynamic> json) {
+    return Participant(
       id: json['id'] as int,
       createdAt: json['createdAt'] != null
           ? DateTime.parse(json['dcreatedAt'])
@@ -22,18 +25,21 @@ class Visited {
       member: json['member'] != null
           ? Member.fromJson(json['member'])
           : null,
-      place: json['place'] != null
-          ? Place.fromJson(json['place'])
+      chatRoom: json['chatRoom'] != null
+          ? ChatRoom.fromJson(json['chatRoom'])
           : null,
+
     );
   }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'createdAt': createdAt?.toIso8601String(),
       'updatedAt': updatedAt?.toIso8601String(),
       'member': member?.toJson(),
-      'place': place?.toJson(),
+      'chatRoom': chatRoom?.toJson(),
     };
   }
+
 }
