@@ -127,12 +127,12 @@ class _SurveySixthState extends State<SurveySixth> {
               setState(() {
                 color7 = (color7 == Colors.blue) ? Colors.grey : Colors.blue;
               });
-            }, color6),
+            }, color7),
             _buildToggleButton('가부키 메이크업 체험', () {
               setState(() {
                 color8 = (color8 == Colors.blue) ? Colors.grey : Colors.blue;
               });
-            }, color6),
+            }, color8),
             
             SizedBox(
               width: 300,
