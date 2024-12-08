@@ -1,23 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-
-class LoginPage extends StatelessWidget {
-  final _title = 'login page';
-
-  const LoginPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner:false,
-      title : _title,
-      home: const LoginPageWidget(),
-    );
-  }
-}
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 class LoginPageWidget extends StatefulWidget {
   const LoginPageWidget({super.key});
@@ -27,48 +11,57 @@ class LoginPageWidget extends StatefulWidget {
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
-  final url = Uri.parse("http://localhost:8080/login/oauth2/code/kakao");
+  Future<void> _loginWithKakao() async {
+    try {
+      // 카카오톡 설치 여부 체크 후 로그인
+      if (await isKakaoTalkInstalled()) {
+        await UserApi.instance.loginWithKakaoTalk();
+      } else {
+        await UserApi.instance.loginWithKakaoAccount();
+      }
 
- 
+      // 카카오 토큰 얻기
+      var token = await TokenManagerProvider.instance.manager.getToken();
+      var kakaoAccessToken = token?.accessToken;
 
-  @override
-  void initState() {
-    super.initState();
-  }
+      print("kakaoAccessToken: $kakaoAccessToken"); // 실제 값 출력
+      var response = await http.post(
+        Uri.parse('http://localhost:8080/api/v1/auth/kakao'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $kakaoAccessToken',
+        },
+      );
+      print('Status Code: ${response.statusCode}');
+      print('Response Body: ${response.body}');
 
-  Future<void> _handleKakaoLogin() async {
-    if (await canLaunchUrl(url)) {
-      // Launch the Spring server's Kakao login endpoint
-      await launchUrl(url);
-      // Monitor if redirected back to the app with a token
-    } else {
-      throw 'Could not launch $url';
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        var jwtAccessToken = data['accessToken'];
+        var jwtRefreshToken = data['refreshToken'];
+
+        // 여기서 jwtAccessToken, jwtRefreshToken을 secure storage 등 저장
+        // 이후 약관 동의 여부 API 호출 또는 설문 필요 시 /login/term 이동
+        Navigator.of(context).pushReplacementNamed('/login/term');
+      } else {
+        print('백엔드 로그인 실패: ${response.statusCode}, ${response.body}');
+      }
+
+    } catch (e) {
+      print('카카오 로그인 에러: $e');
     }
   }
 
   @override
-  void dispose() {
-    
-
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner:false,
-      
-      home: Scaffold(
-        backgroundColor: const Color(0xffF1F4F8),
-        
-        body:  Align(
-            alignment: const AlignmentDirectional(0, 0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
+    return Scaffold(
+      backgroundColor: const Color(0xffF1F4F8),
+      body: Align(
+        alignment: AlignmentDirectional(0,0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Text(
               '잇쇼니 GO',
               style: TextStyle(
                 fontFamily: 'Inter Tight',
@@ -76,21 +69,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 fontSize: 50,
               ),
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: GestureDetector(
-                onTap: _handleKakaoLogin,
-                child: Image.asset(
-                  'assets/images/kakao_login_large_wide.png',
-                  width: 288,
-                  height: 89,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
+            ElevatedButton(
+              onPressed: _loginWithKakao,
+              child: const Text("카카오로 로그인"),
             ),
-              ],
-            ),
-          
+          ],
         ),
       ),
     );
