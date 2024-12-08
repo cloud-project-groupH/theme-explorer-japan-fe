@@ -1,22 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
-class SurveyMain extends StatelessWidget {
-  final _title = 'survey main';
-
-  const SurveyMain({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner:false,
-      title : _title,
-      home: const SurveyMainWidget(),
-    );
-  }
-}
 class SurveyMainWidget extends StatefulWidget {
   const SurveyMainWidget({super.key});
 
@@ -25,273 +8,123 @@ class SurveyMainWidget extends StatefulWidget {
 }
 
 class _SurveyMainWidgetState extends State<SurveyMainWidget> {
-
-  
   var color1 = Colors.blue;
   var color2 = Colors.blue;
   var color3 = Colors.blue;
   var color4 = Colors.blue;
   var color5 = Colors.blue;
-  @override
-  void initState() {
-    super.initState();
-   
-  }
 
-  @override
-  void dispose() {
-  
-
-    super.dispose();
+  Widget _buildToggleButton(String text, VoidCallback onPressed, Color color) {
+    return SizedBox(
+      width: 300,
+      height: 40,
+      child: TextButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          backgroundColor: MaterialStateProperty.all<Color>(color),
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontFamily: 'Inter',
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner:false,
-      
-      home: Scaffold(
-        backgroundColor: const Color(0xffF1F4F8),
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          leading:IconButton(
-            
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: Colors.black,
-              size: 24,
-            ),
-            onPressed: () {
-              print('IconButton pressed ...');
-            },
+    // 여기서도 MaterialApp 사용하지 않는다. main.dart에서 라우트 관리.
+    return Scaffold(
+      backgroundColor: const Color(0xffF1F4F8),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
+            size: 24,
           ),
-          title: const Text(
-            '설문 조사',
-            style: TextStyle(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.black,
-                  fontSize: 22,
-                  letterSpacing: 0.0,
-                ),
-          ),
-          actions: const [],
-          centerTitle: true,
-          elevation: 2,
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        body:  Align(
-            alignment: const AlignmentDirectional(0, 0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Text(
-                  'Q1',
-                  style: TextStyle(
-                        fontFamily: 'Inter Tight',
-                        letterSpacing: 0.0,
-                      ),
-                ),
-                const Text(
-                  '어떤 주제의 여행을 하고 싶으신가요?',
-                  style: TextStyle(
-                        fontFamily: 'Inter',
-                        letterSpacing: 0.0,
-                      ),
-                ),
-                SizedBox(
-                  width: 300,
-                  height: 40,
-                  child: TextButton(
-                    onPressed: (){
-                      print(color1);
-                      if(color1 == Colors.blue){
-                        color1 = Colors.grey;
-                      }
-                      else if(color1 == Colors.grey){
-                        color1 = Colors.blue;
-                      }
-                    },
-                    style: ButtonStyle(
-                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
-                      backgroundColor: WidgetStateProperty.resolveWith(
-                        (states){
-                          if (states.contains(WidgetState.pressed)) {
-                             return color1;
-                          } else {
-                            return color1;
-                          }
-                        }
-                      ),
-                    ),
-                    child: const Text('역사/문화 탐방',
-                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.white
-                          ),),
-                  ),
-                ),
-                SizedBox(
-                  width: 300,
-                  height: 40,
-                  child: TextButton(
-                    onPressed: (){
-                      print(color2);
-                      if(color2 == Colors.blue){
-                        color2 = Colors.grey;
-                      }
-                      else if(color2 == Colors.grey){
-                        color2 = Colors.blue;
-                      }
-                    },
-                    style: ButtonStyle(
-                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
-                      backgroundColor: WidgetStateProperty.resolveWith(
-                        (states){
-                          if (states.contains(WidgetState.pressed)) {
-                             return color2;
-                          } else {
-                            return color2;
-                          }
-                        }
-                      ),
-                    ),
-                    child: const Text('유명 관광지',
-                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.white
-                          ),),
-                  ),
-                ),
-                SizedBox(
-                  width: 300,
-                  height: 40,
-                  child: TextButton(
-                    onPressed: (){
-                      print(color3);
-                      if(color3 == Colors.blue){
-                        color3 = Colors.grey;
-                      }
-                      else if(color3 == Colors.grey){
-                        color3 = Colors.blue;
-                      }
-                    },
-                    style: ButtonStyle(
-                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
-                      backgroundColor: WidgetStateProperty.resolveWith(
-                        (states){
-                          if (states.contains(WidgetState.pressed)) {
-                             return color3;
-                          } else {
-                            return color3;
-                          }
-                        }
-                      ),
-                    ),
-                    child: const Text('맛집 탐방',
-                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.white
-                          ),),
-                  ),
-                ),
-                SizedBox(
-                  width: 300,
-                  height: 40,
-                  child: TextButton(
-                    onPressed: (){
-                      print(color4);
-                      if(color4 == Colors.blue){
-                        color4 = Colors.grey;
-                      }
-                      else if(color4 == Colors.grey){
-                        color4 = Colors.blue;
-                      }
-                    },
-                    style: ButtonStyle(
-                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
-                      backgroundColor: WidgetStateProperty.resolveWith(
-                        (states){
-                          if (states.contains(WidgetState.pressed)) {
-                             return color4;
-                          } else {
-                            return color4;
-                          }
-                        }
-                      ),
-                    ),
-                    child: const Text('자연&힐링',
-                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.white
-                          ),),
-                  ),
-                ),
-                SizedBox(
-                  width: 300,
-                  height: 40,
-                  child: TextButton(
-                    onPressed: (){
-                      print(color5);
-                      if(color5 == Colors.blue){
-                        color5 = Colors.grey;
-                      }
-                      else if(color5 == Colors.grey){
-                        color5 = Colors.blue;
-                      }
-                    },
-                    style: ButtonStyle(
-                      foregroundColor: const WidgetStatePropertyAll(Colors.white),
-                      backgroundColor: WidgetStateProperty.resolveWith(
-                        (states){
-                          if (states.contains(WidgetState.pressed)) {
-                             return color5;
-                          } else {
-                            return color5;
-                          }
-                        }
-                      ),
-                    ),
-                    child: const Text('이색 관광지',
-                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.white
-                          ),),
-                  ),
-                ),
-                SizedBox(
-                  width: 300,
-                  height: 40,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-
-                      
-                      foregroundColor: Colors.grey,
-                      backgroundColor: Colors.blueAccent,
-                      
-                      
-                      
-                    ),
-                    child: const Text('다음으로 넘어가기',
-                            style: TextStyle(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                            color: Colors.white
-                          ),),
-                  ),
-                ),
-                
-                
-                
-              ],
+        title: const Text(
+          '설문 조사',
+          style: TextStyle(
+            fontFamily: 'Inter Tight',
+            color: Colors.black,
+            fontSize: 22,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 2,
+      ),
+      body: Align(
+        alignment: const AlignmentDirectional(0, 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Text(
+              'Q1',
+              style: TextStyle(fontFamily: 'Inter Tight'),
             ),
-          
+            const Text(
+              '어떤 주제의 여행을 하고 싶으신가요?',
+              style: TextStyle(
+                fontFamily: 'Inter',
+              ),
+            ),
+            _buildToggleButton('역사/문화 탐방', () {
+              setState(() {
+                color1 = (color1 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color1),
+            _buildToggleButton('유명 관광지', () {
+              setState(() {
+                color2 = (color2 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color2),
+            _buildToggleButton('맛집 탐방', () {
+              setState(() {
+                color3 = (color3 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color3),
+            _buildToggleButton('자연&힐링', () {
+              setState(() {
+                color4 = (color4 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color4),
+            _buildToggleButton('이색 관광지', () {
+              setState(() {
+                color5 = (color5 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color5),
+            SizedBox(
+              width: 300,
+              height: 40,
+              child: TextButton(
+                onPressed: () {
+                  // 다음 단계로 이동하는 로직 추가 가능
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.blueAccent,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text(
+                  '다음으로 넘어가기',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

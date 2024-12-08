@@ -18,7 +18,6 @@ class LikesPage extends StatelessWidget {
   }
 }
 
-
 class LikesPageWidget extends StatefulWidget {
   const LikesPageWidget({super.key});
 

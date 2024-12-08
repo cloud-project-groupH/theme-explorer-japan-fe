@@ -51,9 +51,13 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>LSApplicationQueriesSchemes</key>
-  	<array>
-    	<string>https</string>
-    	<string>http</string>
-  	</array>
+	<array>
+		<string>https</string>
+		<string>http</string>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
+		<string>kakaoplus</string>
+		<string>kakaotalk</string>
+	</array>
 </dict>
 </plist>
