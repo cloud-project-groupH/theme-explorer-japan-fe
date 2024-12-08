@@ -18,6 +18,7 @@ void main() async{
     nativeAppKey: dotenv.env['NATIVE_APP_KEY'],
     javaScriptAppKey: dotenv.env['JAVASCRIPT_APP_KEY'],
   );
+  
   setPathUrlStrategy();
   runApp(const MyApp());
 }
