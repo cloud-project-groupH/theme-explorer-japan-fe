@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
-import 'survey_secondary.dart';
 import 'survey_third.dart';
 import 'survey_fouth.dart';
 import 'survey_fifth.dart';
 import 'survey_sixth.dart';
 
-class SurveyMainWidget extends StatefulWidget {
-  const SurveyMainWidget({super.key});
-  
+class SurveySecondary extends StatefulWidget {
+  final List<bool> categoriesCheck; 
+  final List<String> subCategories;
+  const SurveySecondary({super.key, required this.categoriesCheck, required this.subCategories});
 
   @override
-  State<SurveyMainWidget> createState() => _SurveyMainWidgetState();
+  State<SurveySecondary> createState() => _SurveySecondaryState(categoriesCheck: categoriesCheck, subCategories: subCategories);
 }
 
-class _SurveyMainWidgetState extends State<SurveyMainWidget> {
-  final List<bool> categoriesCheck = [false, false, false, false, false];
-  final List<String> subCategories = [];
+class _SurveySecondaryState extends State<SurveySecondary> {
+  final List<bool> categoriesCheck;
+  final List<String> subCategories;
+  _SurveySecondaryState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
   var color3 = Colors.blue;
   var color4 = Colors.blue;
   var color5 = Colors.blue;
+  var color6 = Colors.blue;
+  var color7 = Colors.blue;
+  
+  
 
   Widget _buildToggleButton(String text, VoidCallback onPressed, Color color) {
     return SizedBox(
@@ -78,71 +83,77 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text(
-              'Q1',
+              'Q2',
               style: TextStyle(fontFamily: 'Inter Tight'),
             ),
             const Text(
-              '어떤 주제의 여행을 하고 싶으신가요?',
+              '역사/문화 탐방의 세부 카테고리를 골라주세요',
               style: TextStyle(
                 fontFamily: 'Inter',
               ),
             ),
-            _buildToggleButton('역사/문화 탐방', () {
+            _buildToggleButton('신사/사찰', () {
               setState(() {
                 color1 = (color1 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color1),
-            _buildToggleButton('유명 관광지', () {
+            _buildToggleButton('성', () {
               setState(() {
                 color2 = (color2 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color2),
-            _buildToggleButton('맛집 탐방', () {
+            _buildToggleButton('전통 건축물', () {
               setState(() {
                 color3 = (color3 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color3),
-            _buildToggleButton('자연&힐링', () {
+            _buildToggleButton('역사 박물관', () {
               setState(() {
                 color4 = (color4 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color4),
-            _buildToggleButton('이색 관광지', () {
+            _buildToggleButton('전통 예술', () {
               setState(() {
                 color5 = (color5 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color5),
+            _buildToggleButton('고서점', () {
+              setState(() {
+                color6 = (color6 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color6),
+            _buildToggleButton('전통 마을', () {
+              setState(() {
+                color7 = (color7 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color7),
             SizedBox(
               width: 300,
               height: 40,
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.blue){
-                    categoriesCheck[0] = true;
+                    subCategories.add('신사/사찰');
                   }
                   if(color2 == Colors.blue){
-                    categoriesCheck[1] = true;
+                    subCategories.add('성');
                   }
                   if(color3 == Colors.blue){
-                    categoriesCheck[2] = true;
+                    subCategories.add('전통 건축물');
                   }
                   if(color4 == Colors.blue){
-                    categoriesCheck[3] = true;
+                    subCategories.add('역사 박물관');
                   }
                   if(color5 == Colors.blue){
-                    categoriesCheck[4] = true;
+                    subCategories.add('전통 예술');
                   }
-                  if(categoriesCheck[0]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveySecondary(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
+                  if(color6 == Colors.blue){
+                    subCategories.add('고서점');
                   }
-                  else if(categoriesCheck[1]){
+                  if(color7 == Colors.blue){
+                    subCategories.add('전통 마을');
+                  }
+                  if(categoriesCheck[1]){
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: 
@@ -183,7 +194,6 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                     );
                   }
                   // 다음 단계로 이동하는 로직 추가 가능
-                  
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.blueAccent,

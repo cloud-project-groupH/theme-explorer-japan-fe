@@ -1,26 +1,32 @@
-import 'package:flutter/material.dart';
-import 'survey_secondary.dart';
-import 'survey_third.dart';
-import 'survey_fouth.dart';
-import 'survey_fifth.dart';
-import 'survey_sixth.dart';
+import 'dart:math';
 
-class SurveyMainWidget extends StatefulWidget {
-  const SurveyMainWidget({super.key});
-  
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+class SurveySixth extends StatefulWidget {
+  final List<bool> categoriesCheck; 
+  final List<String> subCategories;
+  const SurveySixth({super.key, required this.categoriesCheck, required this.subCategories });
 
   @override
-  State<SurveyMainWidget> createState() => _SurveyMainWidgetState();
+  State<SurveySixth> createState() => _SurveySixthState(categoriesCheck: categoriesCheck, subCategories: subCategories);
 }
 
-class _SurveyMainWidgetState extends State<SurveyMainWidget> {
-  final List<bool> categoriesCheck = [false, false, false, false, false];
-  final List<String> subCategories = [];
+class _SurveySixthState extends State<SurveySixth> {
+  final List<bool> categoriesCheck;
+  final List<String> subCategories;
+  _SurveySixthState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
   var color3 = Colors.blue;
   var color4 = Colors.blue;
   var color5 = Colors.blue;
+  var color6 = Colors.blue;
+  var color7 = Colors.blue;
+  var color8 = Colors.blue;
+
+  
+  
 
   Widget _buildToggleButton(String text, VoidCallback onPressed, Color color) {
     return SizedBox(
@@ -78,119 +84,97 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text(
-              'Q1',
+              'Q6',
               style: TextStyle(fontFamily: 'Inter Tight'),
             ),
             const Text(
-              '어떤 주제의 여행을 하고 싶으신가요?',
+              '이색 관광지의 세부 카테고리를 골라주세요',
               style: TextStyle(
                 fontFamily: 'Inter',
               ),
             ),
-            _buildToggleButton('역사/문화 탐방', () {
+            _buildToggleButton('메이드 카페', () {
               setState(() {
                 color1 = (color1 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color1),
-            _buildToggleButton('유명 관광지', () {
+            _buildToggleButton('도깨비 카페', () {
               setState(() {
                 color2 = (color2 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color2),
-            _buildToggleButton('맛집 탐방', () {
+            _buildToggleButton('신카이 마코토', () {
               setState(() {
                 color3 = (color3 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color3),
-            _buildToggleButton('자연&힐링', () {
+            _buildToggleButton('최애의 아이', () {
               setState(() {
                 color4 = (color4 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color4),
-            _buildToggleButton('이색 관광지', () {
+            _buildToggleButton('슬램 덩크', () {
               setState(() {
                 color5 = (color5 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color5),
+            _buildToggleButton('스트리트 아트', () {
+              setState(() {
+                color6 = (color6 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color6),
+            _buildToggleButton('사무라이 체험', () {
+              setState(() {
+                color7 = (color7 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color6),
+            _buildToggleButton('가부키 메이크업 체험', () {
+              setState(() {
+                color8 = (color8 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color6),
+            
             SizedBox(
               width: 300,
               height: 40,
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.blue){
-                    categoriesCheck[0] = true;
+                    subCategories.add('메이드 카페');
                   }
                   if(color2 == Colors.blue){
-                    categoriesCheck[1] = true;
+                    subCategories.add('도깨비 카페');
                   }
                   if(color3 == Colors.blue){
-                    categoriesCheck[2] = true;
+                    subCategories.add('신카이 마코토');
                   }
                   if(color4 == Colors.blue){
-                    categoriesCheck[3] = true;
+                    subCategories.add('최애의 아이');
                   }
                   if(color5 == Colors.blue){
-                    categoriesCheck[4] = true;
+                    subCategories.add('슬램덩크');
                   }
-                  if(categoriesCheck[0]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveySecondary(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
+                  if(color6 == Colors.blue){
+                    subCategories.add('스트리트 아트');
                   }
-                  else if(categoriesCheck[1]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyThird(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
+                  if(color7 == Colors.blue){
+                    subCategories.add('사무라이 체험');
                   }
-                  else if(categoriesCheck[2]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyFourth(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
+                  if(color8 == Colors.blue){
+                    subCategories.add('가부키 메이드업 체험');
                   }
-                  else if(categoriesCheck[3]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyFifth(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
+                  for (String category in subCategories){
+                    debugPrint(category);
                   }
-                  else if(categoriesCheck[4]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveySixth(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
-                  }
-                  // 다음 단계로 이동하는 로직 추가 가능
                   
+                  // 다음 단계로 이동하는 로직 추가 가능
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
                   foregroundColor: Colors.white,
                 ),
                 child: const Text(
-                  '다음으로 넘어가기',
+                  '설문 완료하기',
                   style: TextStyle(
                     fontFamily: 'Inter',
                     color: Colors.white,

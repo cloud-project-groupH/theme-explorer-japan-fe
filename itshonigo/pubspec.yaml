@@ -61,6 +61,7 @@ dependencies:
   kakao_flutter_sdk_friend: ^1.9.5
   kakao_flutter_sdk_navi: ^1.9.5
   flutter_dotenv: ^5.0.2
+  dotenv: ^4.2.0
 
 dev_dependencies:
   flutter_lints: 4.0.0
