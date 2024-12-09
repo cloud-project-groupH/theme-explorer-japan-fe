@@ -1,23 +1,22 @@
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'tourism_survey.dart';
-import 'restaurant_survey.dart';
-import 'nature_healing_survey.dart';
-import 'unique_survey.dart';
+import 'package:itshownigo/entities/place/category/category_mapper.dart';
 import 'confirm_survey.dart';
 
-class SurveySecondary extends StatefulWidget {
+class SurveySixth extends StatefulWidget {
   final List<bool> categoriesCheck; 
-  final List<String> subCategories;
-  const SurveySecondary({super.key, required this.categoriesCheck, required this.subCategories});
+  final List<int?> subCategories;
+  const SurveySixth({super.key, required this.categoriesCheck, required this.subCategories });
 
   @override
-  State<SurveySecondary> createState() => _SurveySecondaryState(categoriesCheck: categoriesCheck, subCategories: subCategories);
+  State<SurveySixth> createState() => _SurveySixthState(categoriesCheck: categoriesCheck, subCategories: subCategories);
 }
 
-class _SurveySecondaryState extends State<SurveySecondary> {
+class _SurveySixthState extends State<SurveySixth> {
   final List<bool> categoriesCheck;
-  final List<String> subCategories;
-  _SurveySecondaryState({required this.categoriesCheck, required this.subCategories});
+  final List<int?> subCategories;
+  _SurveySixthState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
   var color3 = Colors.blue;
@@ -25,6 +24,8 @@ class _SurveySecondaryState extends State<SurveySecondary> {
   var color5 = Colors.blue;
   var color6 = Colors.blue;
   var color7 = Colors.blue;
+  var color8 = Colors.blue;
+
   
   
 
@@ -84,126 +85,97 @@ class _SurveySecondaryState extends State<SurveySecondary> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text(
-              'Q2',
+              'Q6',
               style: TextStyle(fontFamily: 'Inter Tight'),
             ),
             const Text(
-              '역사/문화 탐방의 세부 카테고리를 골라주세요',
+              '이색 관광지의 세부 카테고리를 골라주세요',
               style: TextStyle(
                 fontFamily: 'Inter',
               ),
             ),
-            _buildToggleButton('신사/사찰', () {
+            _buildToggleButton('메이드 카페', () {
               setState(() {
                 color1 = (color1 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color1),
-            _buildToggleButton('성', () {
+            _buildToggleButton('도깨비 카페', () {
               setState(() {
                 color2 = (color2 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color2),
-            _buildToggleButton('전통 건축물', () {
+            _buildToggleButton('신카이 마코토', () {
               setState(() {
                 color3 = (color3 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color3),
-            _buildToggleButton('역사 박물관', () {
+            _buildToggleButton('최애의 아이', () {
               setState(() {
                 color4 = (color4 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color4),
-            _buildToggleButton('전통 예술', () {
+            _buildToggleButton('슬램 덩크', () {
               setState(() {
                 color5 = (color5 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color5),
-            _buildToggleButton('고서점', () {
+            _buildToggleButton('스트리트 아트', () {
               setState(() {
                 color6 = (color6 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color6),
-            _buildToggleButton('전통 마을', () {
+            _buildToggleButton('사무라이', () {
               setState(() {
                 color7 = (color7 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color7),
+            _buildToggleButton('가부키 메이크업', () {
+              setState(() {
+                color8 = (color8 == Colors.blue) ? Colors.grey : Colors.blue;
+              });
+            }, color8),
+            
             SizedBox(
               width: 300,
               height: 40,
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.grey){
-                    subCategories.add('신사/사찰');
+                    subCategories.add(categoryMapping["메이드 카페"]);
                   }
                   if(color2 == Colors.grey){
-                    subCategories.add('성');
+                    subCategories.add(categoryMapping["도깨비 카페"]);
                   }
                   if(color3 == Colors.grey){
-                    subCategories.add('전통 건축물');
+                    subCategories.add(categoryMapping["신카이 마코토"]);
                   }
                   if(color4 == Colors.grey){
-                    subCategories.add('역사 박물관');
+                    subCategories.add(categoryMapping["최애의 아이"]);
                   }
                   if(color5 == Colors.grey){
-                    subCategories.add('전통 예술');
+                    subCategories.add(categoryMapping["슬램 덩크"]);
                   }
                   if(color6 == Colors.grey){
-                    subCategories.add('고서점');
+                    subCategories.add(categoryMapping["스트리트 아트"]);
                   }
                   if(color7 == Colors.grey){
-                    subCategories.add('전통 마을');
+                    subCategories.add(categoryMapping["사무라이"]);
                   }
-                  if(categoriesCheck[1]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyThird(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
+                  if(color8 == Colors.grey){
+                    subCategories.add(categoryMapping["가부키 메이크업"]);
                   }
-                  else if(categoriesCheck[2]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyFourth(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
-                  }
-                  else if(categoriesCheck[3]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyFifth(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
-                  }
-                  else if(categoriesCheck[4]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveySixth(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
-                  }
-                  else {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyLast(
-                        
-                        subCategories: subCategories,
-                      ))
-                    );
-                  }
+                  
+                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: 
+                    (context) => SurveyLast(
+                      
+                      subCategories: subCategories,
+                    ))
+                  );
+                  
+                  
                   // 다음 단계로 이동하는 로직 추가 가능
                 },
                 style: TextButton.styleFrom(

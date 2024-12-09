@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pages/login_page_widget.dart';
-import 'pages/survey_main_widget.dart';
+import 'pages/survey/survey_main_widget.dart';
 import 'pages/my_page.dart';
 import 'pages/main_page.dart';
-import 'pages/chat_room_list.dart';
+import 'pages/chat/chat_room_list.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:kakao_flutter_sdk_common/kakao_flutter_sdk_common.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk_common.dart';
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MainApp extends StatefulWidget {
-  final List<String> subCategories;
+  final List<int?> subCategories;
   const MainApp({super.key, required this.subCategories});
 
   @override
@@ -54,7 +54,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  final List<String> subCategories;
+  final List<int?> subCategories;
   final PageController _pageController = PageController();
   _MainAppState({required this.subCategories});
   int _currentIndex = 0;
@@ -72,8 +72,8 @@ class _MainAppState extends State<MainApp> {
   }
 
   void _onItemTapped(int index) {
-    for (String category in subCategories){
-                    debugPrint(category);
+    for (int? category in subCategories){
+      debugPrint(category?.toString());
     }
     _pageController.animateToPage(
       index,

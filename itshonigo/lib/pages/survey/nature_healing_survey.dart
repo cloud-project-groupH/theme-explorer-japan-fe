@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import 'nature_healing_survey.dart';
+import 'package:itshownigo/entities/place/category/category_mapper.dart';
 import 'unique_survey.dart';
 import 'confirm_survey.dart';
 
-class SurveyFourth extends StatefulWidget {
+class SurveyFifth extends StatefulWidget {
   final List<bool> categoriesCheck; 
-  final List<String> subCategories;
-  const SurveyFourth({super.key, required this.categoriesCheck, required this.subCategories });
+  final List<int?> subCategories;
+  const SurveyFifth({super.key, required this.categoriesCheck, required this.subCategories });
 
   @override
-  State<SurveyFourth> createState() => _SurveyFourthState(categoriesCheck: categoriesCheck, subCategories: subCategories);
+  State<SurveyFifth> createState() => _SurveyFifthState(categoriesCheck: categoriesCheck, subCategories: subCategories);
 }
 
-class _SurveyFourthState extends State<SurveyFourth> {
+class _SurveyFifthState extends State<SurveyFifth> {
   final List<bool> categoriesCheck;
-  final List<String> subCategories;
-  _SurveyFourthState({required this.categoriesCheck, required this.subCategories});
+  final List<int?> subCategories;
+  _SurveyFifthState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
   var color3 = Colors.blue;
   var color4 = Colors.blue;
   var color5 = Colors.blue;
   var color6 = Colors.blue;
-  var color7 = Colors.blue;
+
   
   
 
@@ -82,87 +82,71 @@ class _SurveyFourthState extends State<SurveyFourth> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text(
-              'Q4',
+              'Q5',
               style: TextStyle(fontFamily: 'Inter Tight'),
             ),
             const Text(
-              '맛집 탐방의 세부 카테고리를 골라주세요',
+              '자연/힐링의 세부 카테고리를 골라주세요',
               style: TextStyle(
                 fontFamily: 'Inter',
               ),
             ),
-            _buildToggleButton('전통 음식', () {
+            _buildToggleButton('정원/공원', () {
               setState(() {
                 color1 = (color1 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color1),
-            _buildToggleButton('길거리 음식', () {
+            _buildToggleButton('하천/호수', () {
               setState(() {
                 color2 = (color2 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color2),
-            _buildToggleButton('고급 요리', () {
+            _buildToggleButton('자연명소', () {
               setState(() {
                 color3 = (color3 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color3),
-            _buildToggleButton('카페 탐방', () {
+            _buildToggleButton('온천/스파', () {
               setState(() {
                 color4 = (color4 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color4),
-            _buildToggleButton('디저트', () {
+            _buildToggleButton('꽃놀이', () {
               setState(() {
                 color5 = (color5 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color5),
-            _buildToggleButton('테마 음식점', () {
+            _buildToggleButton('명상 체험', () {
               setState(() {
                 color6 = (color6 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color6),
-            _buildToggleButton('퓨전양식', () {
-              setState(() {
-                color7 = (color7 == Colors.blue) ? Colors.grey : Colors.blue;
-              });
-            }, color7),
+            
             SizedBox(
               width: 300,
               height: 40,
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.grey){
-                    subCategories.add('전통 음식');
+                    subCategories.add(categoryMapping["정원/공원"]);
                   }
                   if(color2 == Colors.grey){
-                    subCategories.add('길거리 음식');
+                    subCategories.add(categoryMapping["하천/호수"]);
                   }
                   if(color3 == Colors.grey){
-                    subCategories.add('고급 요리');
+                    subCategories.add(categoryMapping["자연 명소"]);
                   }
                   if(color4 == Colors.grey){
-                    subCategories.add('카페 탐방');
+                    subCategories.add(categoryMapping["온천/스파"]);
                   }
                   if(color5 == Colors.grey){
-                    subCategories.add('디저트');
+                    subCategories.add(categoryMapping["꽃놀이"]);
                   }
                   if(color6 == Colors.grey){
-                    subCategories.add('테마 음식점');
+                    subCategories.add(categoryMapping["명상 체험"]);
+
                   }
-                  if(color7 == Colors.grey){
-                    subCategories.add('퓨전양식');
-                  }
-                  if(categoriesCheck[3]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyFifth(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
-                  }
-                  else if(categoriesCheck[4]){
+                  if(categoriesCheck[4]){
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: 

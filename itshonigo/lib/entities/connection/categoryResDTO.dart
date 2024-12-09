@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class CategoryResDTO {
   final String title;
   final int id;
