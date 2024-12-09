@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pages/login_page_widget.dart';
-import 'pages/survey_main_widget.dart';
+import 'pages/survey/survey_main_widget.dart';
 import 'pages/my_page.dart';
 import 'pages/main_page.dart';
-import 'pages/chat_room_list.dart';
+import 'pages/chat/chat_room_list.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:kakao_flutter_sdk_common/kakao_flutter_sdk_common.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk_common.dart';
