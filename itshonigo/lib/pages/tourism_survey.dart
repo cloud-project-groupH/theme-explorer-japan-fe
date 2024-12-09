@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'survey_fouth.dart';
-import 'survey_fifth.dart';
-import 'survey_sixth.dart';
-import 'survey_last.dart';
+import 'restaurant_survey.dart';
+import 'nature_healing_survey.dart';
+import 'unique_survey.dart';
+import 'confirm_survey.dart';
 
 class SurveyThird extends StatefulWidget {
   final List<bool> categoriesCheck; 
