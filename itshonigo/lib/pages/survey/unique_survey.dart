@@ -123,12 +123,12 @@ class _SurveySixthState extends State<SurveySixth> {
                 color6 = (color6 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color6),
-            _buildToggleButton('사무라이 체험', () {
+            _buildToggleButton('사무라이', () {
               setState(() {
                 color7 = (color7 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color7),
-            _buildToggleButton('가부키 메이크업 체험', () {
+            _buildToggleButton('가부키 메이크업', () {
               setState(() {
                 color8 = (color8 == Colors.blue) ? Colors.grey : Colors.blue;
               });

@@ -150,7 +150,7 @@ class _SurveyFourthState extends State<SurveyFourth> {
                     subCategories.add('테마 음식점');
                   }
                   if(color7 == Colors.grey){
-                    subCategories.add('퓨전양식');
+                    subCategories.add('퓨전 양식');
                   }
                   if(categoriesCheck[3]){
                     Navigator.push(

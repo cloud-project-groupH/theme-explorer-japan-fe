@@ -133,7 +133,7 @@ class _SurveyFifthState extends State<SurveyFifth> {
                     subCategories.add('하천/호수');
                   }
                   if(color3 == Colors.grey){
-                    subCategories.add('자연명소');
+                    subCategories.add('자연 명소');
                   }
                   if(color4 == Colors.grey){
                     subCategories.add('온천/스파');
