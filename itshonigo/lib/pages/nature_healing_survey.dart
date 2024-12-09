@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
-import 'survey_fouth.dart';
-import 'survey_fifth.dart';
-import 'survey_sixth.dart';
-import 'survey_last.dart';
+import 'unique_survey.dart';
+import 'confirm_survey.dart';
 
-class SurveyThird extends StatefulWidget {
+class SurveyFifth extends StatefulWidget {
   final List<bool> categoriesCheck; 
   final List<String> subCategories;
-  const SurveyThird({super.key, required this.categoriesCheck, required this.subCategories });
+  const SurveyFifth({super.key, required this.categoriesCheck, required this.subCategories });
 
   @override
-  State<SurveyThird> createState() => _SurveyThirdState(categoriesCheck: categoriesCheck, subCategories: subCategories);
+  State<SurveyFifth> createState() => _SurveyFifthState(categoriesCheck: categoriesCheck, subCategories: subCategories);
 }
 
-class _SurveyThirdState extends State<SurveyThird> {
+class _SurveyFifthState extends State<SurveyFifth> {
   final List<bool> categoriesCheck;
   final List<String> subCategories;
-  _SurveyThirdState({required this.categoriesCheck, required this.subCategories});
+  _SurveyFifthState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
   var color3 = Colors.blue;
   var color4 = Colors.blue;
   var color5 = Colors.blue;
   var color6 = Colors.blue;
-  var color7 = Colors.blue;
+
   
   
 
@@ -83,97 +81,71 @@ class _SurveyThirdState extends State<SurveyThird> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text(
-              'Q3',
+              'Q5',
               style: TextStyle(fontFamily: 'Inter Tight'),
             ),
             const Text(
-              '유명관광지의 세부 카테고리를 골라주세요',
+              '자연/힐링의 세부 카테고리를 골라주세요',
               style: TextStyle(
                 fontFamily: 'Inter',
               ),
             ),
-            _buildToggleButton('랜드마크', () {
+            _buildToggleButton('정원/공원', () {
               setState(() {
                 color1 = (color1 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color1),
-            _buildToggleButton('쇼핑 스트리트', () {
+            _buildToggleButton('하천/호수', () {
               setState(() {
                 color2 = (color2 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color2),
-            _buildToggleButton('유명 거리', () {
+            _buildToggleButton('자연명소', () {
               setState(() {
                 color3 = (color3 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color3),
-            _buildToggleButton('테마파크', () {
+            _buildToggleButton('온천/스파', () {
               setState(() {
                 color4 = (color4 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color4),
-            _buildToggleButton('전망대', () {
+            _buildToggleButton('꽃놀이', () {
               setState(() {
                 color5 = (color5 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color5),
-            _buildToggleButton('현대 건축물', () {
+            _buildToggleButton('명상 체험', () {
               setState(() {
                 color6 = (color6 == Colors.blue) ? Colors.grey : Colors.blue;
               });
             }, color6),
-            _buildToggleButton('야경 스팟', () {
-              setState(() {
-                color7 = (color7 == Colors.blue) ? Colors.grey : Colors.blue;
-              });
-            }, color7),
+            
             SizedBox(
               width: 300,
               height: 40,
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.grey){
-                    subCategories.add('랜드마크');
+                    subCategories.add('정원/공원');
                   }
                   if(color2 == Colors.grey){
-                    subCategories.add('쇼필 스트리트');
+                    subCategories.add('하천/호수');
                   }
                   if(color3 == Colors.grey){
-                    subCategories.add('유명 거리');
+                    subCategories.add('자연명소');
                   }
                   if(color4 == Colors.grey){
-                    subCategories.add('테마파크');
+                    subCategories.add('온천/스파');
                   }
                   if(color5 == Colors.grey){
-                    subCategories.add('전망대');
+                    subCategories.add('꽃놀이');
                   }
                   if(color6 == Colors.grey){
-                    subCategories.add('현대 건축물');
+                    subCategories.add('명상 체험');
+
                   }
-                  if(color7 == Colors.grey){
-                    subCategories.add('야경 스팟');
-                  }
-                  if(categoriesCheck[2]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyFourth(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
-                  }
-                  else if(categoriesCheck[3]){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: 
-                      (context) => SurveyFifth(
-                        categoriesCheck: categoriesCheck,
-                        subCategories: subCategories,
-                      ))
-                    );
-                  }
-                  else if(categoriesCheck[4]){
+                  if(categoriesCheck[4]){
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: 
