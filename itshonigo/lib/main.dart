@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MainApp extends StatefulWidget {
-  final List<String> subCategories;
+  final List<int?> subCategories;
   const MainApp({super.key, required this.subCategories});
 
   @override
@@ -54,7 +54,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  final List<String> subCategories;
+  final List<int?> subCategories;
   final PageController _pageController = PageController();
   _MainAppState({required this.subCategories});
   int _currentIndex = 0;
@@ -72,8 +72,8 @@ class _MainAppState extends State<MainApp> {
   }
 
   void _onItemTapped(int index) {
-    for (String category in subCategories){
-                    debugPrint(category);
+    for (int? category in subCategories){
+      debugPrint(category?.toString());
     }
     _pageController.animateToPage(
       index,

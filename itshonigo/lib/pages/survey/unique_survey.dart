@@ -1,11 +1,12 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:itshownigo/entities/place/category/category_mapper.dart';
 import 'confirm_survey.dart';
 
 class SurveySixth extends StatefulWidget {
   final List<bool> categoriesCheck; 
-  final List<String> subCategories;
+  final List<int?> subCategories;
   const SurveySixth({super.key, required this.categoriesCheck, required this.subCategories });
 
   @override
@@ -14,7 +15,7 @@ class SurveySixth extends StatefulWidget {
 
 class _SurveySixthState extends State<SurveySixth> {
   final List<bool> categoriesCheck;
-  final List<String> subCategories;
+  final List<int?> subCategories;
   _SurveySixthState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
@@ -140,28 +141,28 @@ class _SurveySixthState extends State<SurveySixth> {
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.grey){
-                    subCategories.add('메이드 카페');
+                    subCategories.add(categoryMapping["메이드 카페"]);
                   }
                   if(color2 == Colors.grey){
-                    subCategories.add('도깨비 카페');
+                    subCategories.add(categoryMapping["도깨비 카페"]);
                   }
                   if(color3 == Colors.grey){
-                    subCategories.add('신카이 마코토');
+                    subCategories.add(categoryMapping["신카이 마코토"]);
                   }
                   if(color4 == Colors.grey){
-                    subCategories.add('최애의 아이');
+                    subCategories.add(categoryMapping["최애의 아이"]);
                   }
                   if(color5 == Colors.grey){
-                    subCategories.add('슬램덩크');
+                    subCategories.add(categoryMapping["슬램 덩크"]);
                   }
                   if(color6 == Colors.grey){
-                    subCategories.add('스트리트 아트');
+                    subCategories.add(categoryMapping["스트리트 아트"]);
                   }
                   if(color7 == Colors.grey){
-                    subCategories.add('사무라이 체험');
+                    subCategories.add(categoryMapping["사무라이"]);
                   }
                   if(color8 == Colors.grey){
-                    subCategories.add('가부키 메이드업 체험');
+                    subCategories.add(categoryMapping["가부키 메이크업"]);
                   }
                   
                   

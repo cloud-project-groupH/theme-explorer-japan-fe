@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:itshownigo/entities/place/category/category_mapper.dart';
 import 'unique_survey.dart';
 import 'confirm_survey.dart';
 
 class SurveyFifth extends StatefulWidget {
   final List<bool> categoriesCheck; 
-  final List<String> subCategories;
+  final List<int?> subCategories;
   const SurveyFifth({super.key, required this.categoriesCheck, required this.subCategories });
 
   @override
@@ -13,7 +14,7 @@ class SurveyFifth extends StatefulWidget {
 
 class _SurveyFifthState extends State<SurveyFifth> {
   final List<bool> categoriesCheck;
-  final List<String> subCategories;
+  final List<int?> subCategories;
   _SurveyFifthState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
@@ -127,22 +128,22 @@ class _SurveyFifthState extends State<SurveyFifth> {
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.grey){
-                    subCategories.add('정원/공원');
+                    subCategories.add(categoryMapping["정원/공원"]);
                   }
                   if(color2 == Colors.grey){
-                    subCategories.add('하천/호수');
+                    subCategories.add(categoryMapping["하천/호수"]);
                   }
                   if(color3 == Colors.grey){
-                    subCategories.add('자연 명소');
+                    subCategories.add(categoryMapping["자연 명소"]);
                   }
                   if(color4 == Colors.grey){
-                    subCategories.add('온천/스파');
+                    subCategories.add(categoryMapping["온천/스파"]);
                   }
                   if(color5 == Colors.grey){
-                    subCategories.add('꽃놀이');
+                    subCategories.add(categoryMapping["꽃놀이"]);
                   }
                   if(color6 == Colors.grey){
-                    subCategories.add('명상 체험');
+                    subCategories.add(categoryMapping["명상 체험"]);
 
                   }
                   if(categoriesCheck[4]){

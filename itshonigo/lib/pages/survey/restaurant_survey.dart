@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:itshownigo/entities/place/category/category_mapper.dart';
 import 'nature_healing_survey.dart';
 import 'unique_survey.dart';
 import 'confirm_survey.dart';
 
 class SurveyFourth extends StatefulWidget {
   final List<bool> categoriesCheck; 
-  final List<String> subCategories;
+  final List<int?> subCategories;
   const SurveyFourth({super.key, required this.categoriesCheck, required this.subCategories });
 
   @override
@@ -14,7 +15,7 @@ class SurveyFourth extends StatefulWidget {
 
 class _SurveyFourthState extends State<SurveyFourth> {
   final List<bool> categoriesCheck;
-  final List<String> subCategories;
+  final List<int?> subCategories;
   _SurveyFourthState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
@@ -132,25 +133,25 @@ class _SurveyFourthState extends State<SurveyFourth> {
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.grey){
-                    subCategories.add('전통 음식');
+                    subCategories.add(categoryMapping["전통 음식"]);
                   }
                   if(color2 == Colors.grey){
-                    subCategories.add('길거리 음식');
+                    subCategories.add(categoryMapping["길거리 음식"]);
                   }
                   if(color3 == Colors.grey){
-                    subCategories.add('고급 요리');
+                    subCategories.add(categoryMapping["고급 요리"]);
                   }
                   if(color4 == Colors.grey){
-                    subCategories.add('카페 탐방');
+                    subCategories.add(categoryMapping["카페 탐방"]);
                   }
                   if(color5 == Colors.grey){
-                    subCategories.add('디저트');
+                    subCategories.add(categoryMapping["디저트"]);
                   }
                   if(color6 == Colors.grey){
-                    subCategories.add('테마 음식점');
+                    subCategories.add(categoryMapping["테마 음식점"]);
                   }
                   if(color7 == Colors.grey){
-                    subCategories.add('퓨전 양식');
+                    subCategories.add(categoryMapping["퓨전 양식"]);
                   }
                   if(categoriesCheck[3]){
                     Navigator.push(

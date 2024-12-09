@@ -16,7 +16,7 @@ class SurveyMainWidget extends StatefulWidget {
 
 class _SurveyMainWidgetState extends State<SurveyMainWidget> {
   final List<bool> categoriesCheck = [false, false, false, false, false];
-  final List<String> subCategories = [];
+  final List<int?> subCategories = [];
   var color1 = Colors.blue;
   var color2 = Colors.blue;
   var color3 = Colors.blue;

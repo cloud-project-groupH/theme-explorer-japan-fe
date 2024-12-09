@@ -4,7 +4,7 @@ import '../../main.dart';
 
 class SurveyLast extends StatefulWidget {
   
-  final List<String> subCategories;
+  final List<int?> subCategories;
   const SurveyLast({super.key, required this.subCategories });
 
   @override
@@ -13,7 +13,7 @@ class SurveyLast extends StatefulWidget {
 
 class _SurveyLastState extends State<SurveyLast> {
  
-  final List<String> subCategories;
+  final List<int?> subCategories;
   _SurveyLastState({ required this.subCategories});
   
 

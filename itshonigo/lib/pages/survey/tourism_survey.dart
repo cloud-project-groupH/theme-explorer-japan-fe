@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itshownigo/entities/place/category/category_mapper.dart';
 import 'restaurant_survey.dart';
 import 'nature_healing_survey.dart';
 import 'unique_survey.dart';
@@ -6,7 +7,7 @@ import 'confirm_survey.dart';
 
 class SurveyThird extends StatefulWidget {
   final List<bool> categoriesCheck; 
-  final List<String> subCategories;
+  final List<int?> subCategories;
   const SurveyThird({super.key, required this.categoriesCheck, required this.subCategories });
 
   @override
@@ -15,7 +16,7 @@ class SurveyThird extends StatefulWidget {
 
 class _SurveyThirdState extends State<SurveyThird> {
   final List<bool> categoriesCheck;
-  final List<String> subCategories;
+  final List<int?> subCategories;
   _SurveyThirdState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
@@ -133,25 +134,25 @@ class _SurveyThirdState extends State<SurveyThird> {
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.grey){
-                    subCategories.add('랜드마크');
+                    subCategories.add(categoryMapping["랜드 마크"]);
                   }
                   if(color2 == Colors.grey){
-                    subCategories.add('쇼필 스트리트');
+                    subCategories.add(categoryMapping["쇼핑 스트리트"]);
                   }
                   if(color3 == Colors.grey){
-                    subCategories.add('유명 거리');
+                    subCategories.add(categoryMapping["유명 거리"]);
                   }
                   if(color4 == Colors.grey){
-                    subCategories.add('테마파크');
+                    subCategories.add(categoryMapping["테마 파크"]);
                   }
                   if(color5 == Colors.grey){
-                    subCategories.add('전망대');
+                    subCategories.add(categoryMapping["전망대"]);
                   }
                   if(color6 == Colors.grey){
-                    subCategories.add('현대 건축물');
+                    subCategories.add(categoryMapping["현대 건축물"]);
                   }
                   if(color7 == Colors.grey){
-                    subCategories.add('야경 스팟');
+                    subCategories.add(categoryMapping["야경 스팟"]);
                   }
                   if(categoriesCheck[2]){
                     Navigator.push(

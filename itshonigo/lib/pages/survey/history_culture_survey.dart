@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itshownigo/entities/place/category/category_mapper.dart';
 import 'tourism_survey.dart';
 import 'restaurant_survey.dart';
 import 'nature_healing_survey.dart';
@@ -7,7 +8,7 @@ import 'confirm_survey.dart';
 
 class SurveySecondary extends StatefulWidget {
   final List<bool> categoriesCheck; 
-  final List<String> subCategories;
+  final List<int?> subCategories;
   const SurveySecondary({super.key, required this.categoriesCheck, required this.subCategories});
 
   @override
@@ -16,7 +17,7 @@ class SurveySecondary extends StatefulWidget {
 
 class _SurveySecondaryState extends State<SurveySecondary> {
   final List<bool> categoriesCheck;
-  final List<String> subCategories;
+  final List<int?> subCategories;
   _SurveySecondaryState({required this.categoriesCheck, required this.subCategories});
   var color1 = Colors.blue;
   var color2 = Colors.blue;
@@ -134,25 +135,25 @@ class _SurveySecondaryState extends State<SurveySecondary> {
               child: TextButton(
                 onPressed: () {
                   if(color1 == Colors.grey){
-                    subCategories.add('신사/사찰');
+                    subCategories.add(categoryMapping["신사/사찰"]);
                   }
                   if(color2 == Colors.grey){
-                    subCategories.add('성');
+                    subCategories.add(categoryMapping["성"]);
                   }
                   if(color3 == Colors.grey){
-                    subCategories.add('전통 건축물');
+                    subCategories.add(categoryMapping["전통 건축물"]);
                   }
                   if(color4 == Colors.grey){
-                    subCategories.add('역사 박물관');
+                    subCategories.add(categoryMapping["역사 박물관"]);
                   }
                   if(color5 == Colors.grey){
-                    subCategories.add('전통 예술');
+                    subCategories.add(categoryMapping["전통 예술"]);
                   }
                   if(color6 == Colors.grey){
-                    subCategories.add('고서점');
+                    subCategories.add(categoryMapping["고서점"]);
                   }
                   if(color7 == Colors.grey){
-                    subCategories.add('전통 마을');
+                    subCategories.add(categoryMapping["전통 마을"]);
                   }
                   if(categoriesCheck[1]){
                     Navigator.push(
