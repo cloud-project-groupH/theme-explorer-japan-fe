@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'survey_fouth.dart';
 import 'survey_fifth.dart';
 import 'survey_sixth.dart';
+import 'survey_last.dart';
 
 class SurveyThird extends StatefulWidget {
   final List<bool> categoriesCheck; 
@@ -131,25 +132,25 @@ class _SurveyThirdState extends State<SurveyThird> {
               height: 40,
               child: TextButton(
                 onPressed: () {
-                  if(color1 == Colors.blue){
+                  if(color1 == Colors.grey){
                     subCategories.add('랜드마크');
                   }
-                  if(color2 == Colors.blue){
+                  if(color2 == Colors.grey){
                     subCategories.add('쇼필 스트리트');
                   }
-                  if(color3 == Colors.blue){
+                  if(color3 == Colors.grey){
                     subCategories.add('유명 거리');
                   }
-                  if(color4 == Colors.blue){
+                  if(color4 == Colors.grey){
                     subCategories.add('테마파크');
                   }
-                  if(color5 == Colors.blue){
+                  if(color5 == Colors.grey){
                     subCategories.add('전망대');
                   }
-                  if(color6 == Colors.blue){
+                  if(color6 == Colors.grey){
                     subCategories.add('현대 건축물');
                   }
-                  if(color7 == Colors.blue){
+                  if(color7 == Colors.grey){
                     subCategories.add('야경 스팟');
                   }
                   if(categoriesCheck[2]){
@@ -178,6 +179,16 @@ class _SurveyThirdState extends State<SurveyThird> {
                       MaterialPageRoute(builder: 
                       (context) => SurveySixth(
                         categoriesCheck: categoriesCheck,
+                        subCategories: subCategories,
+                      ))
+                    );
+                  }
+                  else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: 
+                      (context) => SurveyLast(
+                        
                         subCategories: subCategories,
                       ))
                     );

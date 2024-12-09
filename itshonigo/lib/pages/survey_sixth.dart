@@ -1,7 +1,7 @@
-import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'survey_last.dart';
 
 class SurveySixth extends StatefulWidget {
   final List<bool> categoriesCheck; 
@@ -139,33 +139,41 @@ class _SurveySixthState extends State<SurveySixth> {
               height: 40,
               child: TextButton(
                 onPressed: () {
-                  if(color1 == Colors.blue){
+                  if(color1 == Colors.grey){
                     subCategories.add('메이드 카페');
                   }
-                  if(color2 == Colors.blue){
+                  if(color2 == Colors.grey){
                     subCategories.add('도깨비 카페');
                   }
-                  if(color3 == Colors.blue){
+                  if(color3 == Colors.grey){
                     subCategories.add('신카이 마코토');
                   }
-                  if(color4 == Colors.blue){
+                  if(color4 == Colors.grey){
                     subCategories.add('최애의 아이');
                   }
-                  if(color5 == Colors.blue){
+                  if(color5 == Colors.grey){
                     subCategories.add('슬램덩크');
                   }
-                  if(color6 == Colors.blue){
+                  if(color6 == Colors.grey){
                     subCategories.add('스트리트 아트');
                   }
-                  if(color7 == Colors.blue){
+                  if(color7 == Colors.grey){
                     subCategories.add('사무라이 체험');
                   }
-                  if(color8 == Colors.blue){
+                  if(color8 == Colors.grey){
                     subCategories.add('가부키 메이드업 체험');
                   }
-                  for (String category in subCategories){
-                    debugPrint(category);
-                  }
+                  
+                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: 
+                    (context) => SurveyLast(
+                      
+                      subCategories: subCategories,
+                    ))
+                  );
+                  
                   
                   // 다음 단계로 이동하는 로직 추가 가능
                 },
@@ -174,7 +182,7 @@ class _SurveySixthState extends State<SurveySixth> {
                   foregroundColor: Colors.white,
                 ),
                 child: const Text(
-                  '설문 완료하기',
+                  '다음으로 넘어가기',
                   style: TextStyle(
                     fontFamily: 'Inter',
                     color: Colors.white,

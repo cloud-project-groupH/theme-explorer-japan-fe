@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'survey_sixth.dart';
+import 'survey_last.dart';
 
 class SurveyFifth extends StatefulWidget {
   final List<bool> categoriesCheck; 
@@ -125,22 +126,22 @@ class _SurveyFifthState extends State<SurveyFifth> {
               height: 40,
               child: TextButton(
                 onPressed: () {
-                  if(color1 == Colors.blue){
+                  if(color1 == Colors.grey){
                     subCategories.add('정원/공원');
                   }
-                  if(color2 == Colors.blue){
+                  if(color2 == Colors.grey){
                     subCategories.add('하천/호수');
                   }
-                  if(color3 == Colors.blue){
+                  if(color3 == Colors.grey){
                     subCategories.add('자연명소');
                   }
-                  if(color4 == Colors.blue){
+                  if(color4 == Colors.grey){
                     subCategories.add('온천/스파');
                   }
-                  if(color5 == Colors.blue){
+                  if(color5 == Colors.grey){
                     subCategories.add('꽃놀이');
                   }
-                  if(color6 == Colors.blue){
+                  if(color6 == Colors.grey){
                     subCategories.add('명상 체험');
 
                   }
@@ -150,6 +151,16 @@ class _SurveyFifthState extends State<SurveyFifth> {
                       MaterialPageRoute(builder: 
                       (context) => SurveySixth(
                         categoriesCheck: categoriesCheck,
+                        subCategories: subCategories,
+                      ))
+                    );
+                  }
+                  else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: 
+                      (context) => SurveyLast(
+                        
                         subCategories: subCategories,
                       ))
                     );

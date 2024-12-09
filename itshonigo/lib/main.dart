@@ -11,6 +11,7 @@ import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async{
+  
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
   //runApp() 호출 전 flutter sdk 초기화
@@ -20,6 +21,7 @@ void main() async{
   );
   
   setPathUrlStrategy();
+  
   runApp(const MyApp());
 }
 
@@ -35,28 +37,32 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginPageWidget(),
         '/login/term': (context) => const SurveyMainWidget(),
-        '/main': (context) => const MainApp(),
+        '/main': (context) => const MainApp(subCategories: [],),
         '/mypage': (context) => const MyPage(),
+        '/survey': (context) => const SurveyMainWidget(),
       },
     );
   }
 }
 
 class MainApp extends StatefulWidget {
-  const MainApp({super.key});
+  final List<String> subCategories;
+  const MainApp({super.key, required this.subCategories});
 
   @override
-  State<MainApp> createState() => _MainAppState();
+  State<MainApp> createState() => _MainAppState(subCategories: subCategories);
 }
 
 class _MainAppState extends State<MainApp> {
+  final List<String> subCategories;
   final PageController _pageController = PageController();
+  _MainAppState({required this.subCategories});
   int _currentIndex = 0;
 
   final List<Widget> _pages = <Widget>[
-    const MainPage(),
-    const ChatRoomList(),
-    const MyPage(),
+    const MainPageWidget(),
+    const ChatRoomListWidget(),
+    const MyPageWidget(),
   ];
 
   void _onPageChanged(int index) {
@@ -66,6 +72,9 @@ class _MainAppState extends State<MainApp> {
   }
 
   void _onItemTapped(int index) {
+    for (String category in subCategories){
+                    debugPrint(category);
+    }
     _pageController.animateToPage(
       index,
       duration: const Duration(milliseconds: 300),
@@ -81,6 +90,7 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: PageView(
         controller: _pageController,
