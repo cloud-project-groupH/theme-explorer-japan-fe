@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import '../../main.dart';
 
 class SurveyLast extends StatefulWidget {
@@ -15,7 +17,35 @@ class _SurveyLastState extends State<SurveyLast> {
  
   final List<int?> subCategories;
   _SurveyLastState({ required this.subCategories});
-  
+
+  Future<void> sendPostRequest(List<int?> categoryIds) async {
+    final url = Uri.parse("http://localhost:8080/api/v1/members/categories");
+
+    try {
+      // 필터링: null 값을 제거하고 서버에 전송
+      final filteredIds = categoryIds.whereType<int>().toList();
+
+      // JSON body 생성
+      final requestBody = jsonEncode({"ids": filteredIds});
+
+      // Request Body 출력
+      debugPrint("Request Body: $requestBody");
+
+      final response = await http.post(
+        url,
+        headers: {"Content-Type": "application/json"},
+        body: requestBody,
+      );
+
+      if (response.statusCode == 200) {
+        debugPrint("Post request successful: ${response.body}");
+      } else {
+        debugPrint("Failed to send post request: ${response.statusCode}");
+      }
+    } catch (e) {
+      debugPrint("Error occurred while sending post request: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +97,9 @@ class _SurveyLastState extends State<SurveyLast> {
               width: 300,
               height: 40,
               child: TextButton(
-                onPressed: () {
+                onPressed: () async {
+                  await sendPostRequest(subCategories);
+
                   Navigator.pushAndRemoveUntil(
                     context, 
                     MaterialPageRoute(builder: 
