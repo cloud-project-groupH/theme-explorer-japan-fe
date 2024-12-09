@@ -1,7 +1,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'survey_last.dart';
+import 'confirm_survey.dart';
 
 class SurveySixth extends StatefulWidget {
   final List<bool> categoriesCheck; 
