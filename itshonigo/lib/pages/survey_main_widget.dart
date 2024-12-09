@@ -4,6 +4,7 @@ import 'survey_third.dart';
 import 'survey_fouth.dart';
 import 'survey_fifth.dart';
 import 'survey_sixth.dart';
+import 'survey_last.dart';
 
 class SurveyMainWidget extends StatefulWidget {
   const SurveyMainWidget({super.key});
@@ -117,19 +118,19 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
               height: 40,
               child: TextButton(
                 onPressed: () {
-                  if(color1 == Colors.blue){
+                  if(color1 == Colors.grey){
                     categoriesCheck[0] = true;
                   }
-                  if(color2 == Colors.blue){
+                  if(color2 == Colors.grey){
                     categoriesCheck[1] = true;
                   }
-                  if(color3 == Colors.blue){
+                  if(color3 == Colors.grey){
                     categoriesCheck[2] = true;
                   }
-                  if(color4 == Colors.blue){
+                  if(color4 == Colors.grey){
                     categoriesCheck[3] = true;
                   }
-                  if(color5 == Colors.blue){
+                  if(color5 == Colors.grey){
                     categoriesCheck[4] = true;
                   }
                   if(categoriesCheck[0]){
@@ -178,6 +179,16 @@ class _SurveyMainWidgetState extends State<SurveyMainWidget> {
                       MaterialPageRoute(builder: 
                       (context) => SurveySixth(
                         categoriesCheck: categoriesCheck,
+                        subCategories: subCategories,
+                      ))
+                    );
+                  }
+                  else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: 
+                      (context) => SurveyLast(
+                        
                         subCategories: subCategories,
                       ))
                     );
