@@ -37,7 +37,7 @@ class _SurveyLastState extends State<SurveyLast> {
         body: requestBody,
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 204) {
         debugPrint("Post request successful: ${response.body}");
       } else {
         debugPrint("Failed to send post request: ${response.statusCode}");

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import '../entities/member/member_provider.dart';
 
 class MyPage extends StatelessWidget {
   final _title = 'location page';
@@ -31,18 +32,16 @@ class _MyPageWidgetState extends State<MyPageWidget> {
   @override
   void initState() {
     super.initState();
-    
   }
 
   @override
   void dispose() {
-   
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final member = Provider.of<MemberProvider>(context).member;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -109,37 +108,40 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Image.asset(
-                                    'assets/images/choco.png',
+                                  child: member != null && member.profileUrl != null
+                                      ? Image.network(
+                                    member.profileUrl!,
+                                    fit: BoxFit.cover,
+                                  )
+                                      : Image.asset(
+                                    'assets/images/default_profile.png', // 기본 이미지
                                     fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
-                              const Column(
-                                mainAxisSize: MainAxisSize.max,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(5),
+                                    padding: const EdgeInsets.all(5),
                                     child: Text(
-                                      '사용자 이름',
-                                      style: TextStyle
-                                          (
-                                            fontFamily: 'Inter',
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            letterSpacing: 0.0,
-                                          ),
+                                      member?.nickname ?? '사용자', // 서버에서 가져온 이름
+                                      style: const TextStyle(
+                                        fontFamily: 'Inter',
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
                                     ),
                                   ),
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsets.all(5),
                                     child: Text(
-                                      '시용자 소개',
+                                      '시용자 소개', // 필요 시 추가
                                       style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                          ),
+                                        fontFamily: 'Inter',
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
                                 ],

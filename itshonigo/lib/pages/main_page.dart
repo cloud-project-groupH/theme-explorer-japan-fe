@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import '/entities/member/member_provider.dart';
 
 class MainPage extends StatelessWidget {
   final _title = 'main page';
@@ -79,13 +80,12 @@ class _MainPageWidgetState extends State<MainPageWidget> {
 
   @override
   void dispose() {
-    
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final member = Provider.of<MemberProvider>(context).member;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -104,20 +104,23 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-                child: Image.asset(
-                                    'assets/images/choco.png',
-                                    width: 40,
-                                    height: 40,
-                                    fit: BoxFit.cover,
-                                  ),
+                child: member?.profileUrl != null
+                    ? Image.network(
+                  member!.profileUrl!,
+                  fit: BoxFit.cover,
+                )
+                    : Image.asset(
+                  'assets/images/choco.png', // 기본 이미지
+                  fit: BoxFit.cover,
+                ),
               ),
-              const Text(
-                '사용자이름',
-                style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 20,
-                      letterSpacing: 0.0,
-                    ),
+              Text(
+                '${member?.nickname ?? '사용자'} 님 반가워요', // 이름 가져오기, 없을 경우 기본값
+                style: const TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 16,
+                  letterSpacing: 0.0,
+                ),
               ),
             ],
           ),
