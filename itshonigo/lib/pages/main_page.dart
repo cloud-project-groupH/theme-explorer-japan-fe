@@ -36,6 +36,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
   void initState() {
     super.initState();
     _fetchPopularPlaces();
+    _fetchPersonalPlaces();
   }
 
   Future<void> _fetchPopularPlaces() async {
@@ -68,6 +69,41 @@ class _MainPageWidgetState extends State<MainPageWidget> {
       }
     } catch (e) {
       debugPrint('Error fetching popular places: $e');
+    }
+  }
+  Future<void> _fetchPersonalPlaces() async {
+    try {
+      final memberProvider = Provider.of<MemberProvider>(context, listen: false);
+      final token = memberProvider.accessToken;
+
+      final response = await http.get(
+        Uri.parse('http://localhost:8080/api/v1/places/personal'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          if (token != null) "Authorization": "Bearer $token",
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final decodedBody = utf8.decode(response.bodyBytes);
+        final data = jsonDecode(decodedBody) as List;
+
+        debugPrint(data.toString());
+        setState(() {
+          customList.clear();
+          customList.addAll(
+              data.map((place) => {
+                "image": (place['imageUrl'] ?? '') as String,
+                "name": (place['title'] ?? '여행지') as String,
+                "explain": (place['description'] ?? '설명 없음') as String,
+              }).toList()
+          );
+        });
+      } else {
+        debugPrint('Failed to fetch personal places: ${response.statusCode}');
+      }
+    } catch (e) {
+      debugPrint('Error fetching personal places: $e');
     }
   }
 
@@ -270,17 +306,10 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                               height: 100,
                               decoration: const BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(0),
-                                  bottomRight: Radius.circular(0),
-                                  topLeft: Radius.circular(0),
-                                  topRight: Radius.circular(0),
-                                ),
                               ),
                               child: ListView.separated(
                                 padding: EdgeInsets.zero,
-                                separatorBuilder:
-                                    (BuildContext context, int index) =>
+                                separatorBuilder: (BuildContext context, int index) =>
                                 const Divider(),
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
@@ -289,8 +318,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                   return custom(
                                     name: customList[index]["name"].toString(),
                                     image: customList[index]["image"].toString(),
-                                    explain:
-                                    customList[index]["explain"].toString(),
+                                    explain: customList[index]["explain"].toString(),
                                   );
                                 },
                               ),

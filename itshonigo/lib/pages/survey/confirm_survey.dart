@@ -28,7 +28,7 @@ class _SurveyLastState extends State<SurveyLast> {
       final filteredIds = categoryIds.whereType<int>().toList();
 
       // JSON body 생성
-      final requestBody = jsonEncode({"ids": filteredIds});
+      final requestBody = jsonEncode({"categoryIds": filteredIds});
 
       // MemberProvider에서 토큰 가져오기
       final memberProvider = Provider.of<MemberProvider>(context, listen: false);
