@@ -1,8 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '/entities/member/member_provider.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MainPage extends StatelessWidget {
   final _title = 'main page';
@@ -12,7 +13,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title : _title,
+      title: _title,
       debugShowCheckedModeBanner: false,
       home: const MainPageWidget(),
     );
@@ -27,60 +28,83 @@ class MainPageWidget extends StatefulWidget {
 }
 
 class _MainPageWidgetState extends State<MainPageWidget> {
-  final popularList =[
-    {
-      "image":'assets/images/choco.png',
-      "name":"여행지",
-    },
-    {
-      "image":'assets/images/choco.png',
-      "name":"여행지",
-    },
-    {
-      "image":'assets/images/choco.png',
-      "name":"여행지",
-    },
-    {
-      "image":'assets/images/choco.png',
-      "name":"여행지",
-    }
-  ];
-  final customList=[
-    {
-      "name" : "여행지 이름",
-      "image": 'assets/images/choco.png',
-      "explain": "여행지 설명"
-    },
-    {
-    
-      "name" : "여행지 이름",
-      "image": 'assets/images/choco.png',
-      "explain": "여행지 설명"
-    },
-    {
-    
-      "name" : "여행지 이름",
-      "image": 'assets/images/choco.png',
-      "explain": "여행지 설명"
-    },
-    {
-    
-      "name" : "여행지 이름",
-      "image": 'assets/images/choco.png',
-      "explain": "여행지 설명"
-    }
+  List<Map<String, dynamic>> popularList = [];
 
-  ];
-  final TextEditingController _textEditingController = TextEditingController();
+  final List<Map<String, String>> customList = [];
+
   @override
   void initState() {
     super.initState();
-    
+    _fetchPopularPlaces();
+    _fetchPersonalPlaces();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
+  Future<void> _fetchPopularPlaces() async {
+    try {
+      final memberProvider = Provider.of<MemberProvider>(context, listen: false);
+      final token = memberProvider.accessToken;
+
+      final response = await http.get(
+        Uri.parse('http://localhost:8080/api/v1/places/popular'),
+        headers: {'Content-Type': 'application/json; charset=UTF-8',
+          if (token != null) "Authorization": "Bearer $token",
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final decodedBody = utf8.decode(response.bodyBytes);
+        final data = jsonDecode(decodedBody) as List;
+
+        debugPrint(data.toString());
+        setState(() {
+          popularList = data
+              .map((place) => {
+            "image": place['imageUrl'],
+            "name": place['title'] ?? "여행지"
+          })
+              .toList();
+        });
+      } else {
+        debugPrint('Failed to fetch popular places: ${response.statusCode}');
+      }
+    } catch (e) {
+      debugPrint('Error fetching popular places: $e');
+    }
+  }
+  Future<void> _fetchPersonalPlaces() async {
+    try {
+      final memberProvider = Provider.of<MemberProvider>(context, listen: false);
+      final token = memberProvider.accessToken;
+
+      final response = await http.get(
+        Uri.parse('http://localhost:8080/api/v1/places/personal'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          if (token != null) "Authorization": "Bearer $token",
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final decodedBody = utf8.decode(response.bodyBytes);
+        final data = jsonDecode(decodedBody) as List;
+
+        debugPrint(data.toString());
+        setState(() {
+          customList.clear();
+          customList.addAll(
+              data.map((place) => {
+                "image": (place['imageUrl'] ?? '') as String,
+                "name": (place['title'] ?? '여행지') as String,
+                "explain": (place['description'] ?? '설명 없음') as String,
+              }).toList()
+          );
+        });
+      } else {
+        debugPrint('Failed to fetch personal places: ${response.statusCode}');
+      }
+    } catch (e) {
+      debugPrint('Error fetching personal places: $e');
+    }
   }
 
   @override
@@ -89,7 +113,6 @@ class _MainPageWidgetState extends State<MainPageWidget> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        
         backgroundColor: const Color(0xffF1F4F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -109,13 +132,10 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                   member!.profileUrl!,
                   fit: BoxFit.cover,
                 )
-                    : Image.asset(
-                  'assets/images/choco.png', // 기본 이미지
-                  fit: BoxFit.cover,
-                ),
+                    : null, // 기본 이미지를 사용하지 않음
               ),
               Text(
-                '${member?.nickname ?? '사용자'} 님 반가워요', // 이름 가져오기, 없을 경우 기본값
+                '${member?.nickname ?? '사용자'} 님 반가워요',
                 style: const TextStyle(
                   fontFamily: 'Inter',
                   fontSize: 16,
@@ -142,20 +162,17 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                       child: SizedBox(
                         width: 350,
                         child: TextFormField(
-                          controller: _textEditingController,
-                          
                           autofocus: false,
                           obscureText: false,
                           decoration: InputDecoration(
                             isDense: true,
-                            
                             hintText: '검색',
                             hintStyle: const TextStyle(
-                                              color: Colors.grey,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
+                              color: Colors.grey,
+                              fontSize: 14,
+                              fontFamily: 'Inter',
+                              letterSpacing: 0.0,
+                            ),
                             border: OutlineInputBorder(
                               borderSide: const BorderSide(
                                 color: Colors.black,
@@ -163,9 +180,6 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            
-                            
-                            
                             filled: true,
                             fillColor: Colors.white,
                             suffixIcon: const Icon(
@@ -173,15 +187,13 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                               color: Colors.black,
                             ),
                           ),
-                          style:
-                              const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontFamily: 'Inter',
+                            letterSpacing: 0.0,
+                          ),
                           cursorColor: Colors.black,
-                          
                         ),
                       ),
                     ),
@@ -197,10 +209,9 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-        width: 2,
-        color: Colors.grey,
-    ),
-
+                      width: 2,
+                      color: Colors.grey,
+                    ),
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -213,11 +224,11 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                             child: Text(
                               '지금 인기있는 장소',
                               style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontFamily: 'Inter',
+                                letterSpacing: 0.0,
+                              ),
                             ),
                           ),
                         ],
@@ -226,8 +237,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                         width: MediaQuery.sizeOf(context).width,
                         height: 100,
                         decoration: const BoxDecoration(
-                          color:
-                              Colors.white,
+                          color: Colors.white,
                         ),
                         child: ListView.separated(
                           padding: const EdgeInsets.fromLTRB(
@@ -239,14 +249,15 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           itemCount: popularList.length,
-                          separatorBuilder: (BuildContext context, int index) => const VerticalDivider(), 
+                          separatorBuilder:
+                              (BuildContext context, int index) =>
+                          const VerticalDivider(),
                           itemBuilder: (context, index) {
                             return popular(
                               name: popularList[index]["name"].toString(),
                               image: popularList[index]["image"].toString(),
                             );
                           },
-                          
                         ),
                       ),
                     ],
@@ -263,26 +274,26 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-        width: 2,
-        color: Colors.grey,
-    ),
+                        width: 2,
+                        color: Colors.grey,
+                      ),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        const Row(
+                        Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsets.all(5),
+                              padding: const EdgeInsets.all(5),
                               child: Text(
-                                '사용자님을 위한 추천 여행지',
-                                style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
+                                '${member?.nickname ?? "사용자"}님을 위한 추천 여행지',
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                               ),
                             ),
                           ],
@@ -295,27 +306,21 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                               height: 100,
                               decoration: const BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(0),
-                                  bottomRight: Radius.circular(0),
-                                  topLeft: Radius.circular(0),
-                                  topRight: Radius.circular(0),
-                                ),
                               ),
                               child: ListView.separated(
                                 padding: EdgeInsets.zero,
-                                separatorBuilder: (BuildContext context, int index) => const Divider(), 
+                                separatorBuilder: (BuildContext context, int index) =>
+                                const Divider(),
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: customList.length,
                                 itemBuilder: (context, index) {
                                   return custom(
-                                    name:customList[index]["name"].toString(),
-                                    image:customList[index]["image"].toString(),
-                                    explain:customList[index]["explain"].toString(),
+                                    name: customList[index]["name"].toString(),
+                                    image: customList[index]["image"].toString(),
+                                    explain: customList[index]["explain"].toString(),
                                   );
                                 },
-                                
                               ),
                             ),
                           ),
@@ -331,83 +336,113 @@ class _MainPageWidgetState extends State<MainPageWidget> {
       ),
     );
   }
-  Column popular({String image='assets/images/choco.png',String name="여행지"}){
+
+  Column popular({required String image, required String name}) {
+    debugPrint('Loading image: $image, Loading name: $name');
     return Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Image.asset(
-                                    image,
-                                    width: 60,
-                                    height: 60,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Text(
-                                  name,
-                                  style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                ),
-                              ],
-                            );
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: image.isNotEmpty
+              ? Image.network(
+            image,
+            width: 60,
+            height: 60,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              // 네트워크 이미지 로드 실패 시 기본 이미지 표시
+              return Image.asset(
+                'assets/images/japan.jpeg',
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+              );
+            },
+          )
+              : Image.asset(
+            'assets/images/japan.jpeg', // 기본 이미지
+            width: 60,
+            height: 60,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Text(
+          name,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 14,
+            fontFamily: 'Inter',
+            letterSpacing: 0.0,
+          ),
+        ),
+      ],
+    );
   }
-  Row custom({String name = "여행지 이름", String image = 'assets/images/choco.png', String explain = "여행지 설명"}){
+
+  Row custom({required String name, required String image, required String explain}) {
     return Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: Image.asset(
-                                          image,
-                                          width: 120,
-                                          height: 100,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.all(5),
-                                                child: Text(
-                                                  name,
-                                                  style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                                ),
-                                              ),
-                                              Text(
-                                                explain,
-                                                style:
-                                                    const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: image.isNotEmpty
+              ? Image.network(
+            image,
+            width: 120,
+            height: 100,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return Image.asset(
+                'assets/images/japan.jpeg',
+                width: 120,
+                height: 100,
+                fit: BoxFit.cover,
+              );
+            },
+          )
+              : Image.asset(
+            'assets/images/japan.jpeg',
+            width: 120,
+            height: 100,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(5),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontFamily: 'Inter',
+                      letterSpacing: 0.0,
+                    ),
+                  ),
+                ),
+                Text(
+                  explain,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Inter',
+                    letterSpacing: 0.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

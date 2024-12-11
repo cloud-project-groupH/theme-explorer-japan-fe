@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:provider/provider.dart';
+import '/entities/member/member_provider.dart';
 import '../../main.dart';
 
 class SurveyLast extends StatefulWidget {
@@ -26,21 +28,28 @@ class _SurveyLastState extends State<SurveyLast> {
       final filteredIds = categoryIds.whereType<int>().toList();
 
       // JSON body 생성
-      final requestBody = jsonEncode({"ids": filteredIds});
+      final requestBody = jsonEncode({"categoryIds": filteredIds});
+
+      // MemberProvider에서 토큰 가져오기
+      final memberProvider = Provider.of<MemberProvider>(context, listen: false);
+      final token = memberProvider.accessToken;
 
       // Request Body 출력
       debugPrint("Request Body: $requestBody");
 
       final response = await http.post(
         url,
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type": "application/json",
+          if (token != null) "Authorization": "Bearer $token",
+        },
+
         body: requestBody,
       );
 
       if (response.statusCode == 204) {
         debugPrint("Post request successful: ${response.body}");
       } else {
-        debugPrint("Failed to send post request: ${response.statusCode}");
+        debugPrint("Failed to send confirm post request: ${response.statusCode}");
       }
     } catch (e) {
       debugPrint("Error occurred while sending post request: $e");

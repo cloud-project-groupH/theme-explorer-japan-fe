@@ -135,9 +135,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 fontSize: 50,
               ),
             ),
-            ElevatedButton(
-              onPressed: _loginWithKakao,
-              child: const Text("카카오로 로그인"),
+            GestureDetector(
+              onTap: _loginWithKakao,
+              child: Image.asset(
+                'assets/images/kakao_login_large_wide.png', // 이미지 경로
+                width: 250,
+                height: 60,
+                fit: BoxFit.cover,
+              ),
             ),
           ],
         ),
